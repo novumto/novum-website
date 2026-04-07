@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>基礎 GEO 架構建置 | NOVUM</title>
+  <meta name="description" content="NOVUM 基礎 GEO 架構建置：為品牌打造 AI 看得懂的對外入口，搭配結構化資料與 Google Search Console 監控。NT$6,800起。">
+
+  <meta property="og:title" content="基礎 GEO 架構建置 | NOVUM">
+  <meta property="og:description" content="為品牌打造 AI 看得懂的對外入口，搭配結構化資料與 Google Search Console 監控。NT$6,800起。">
+  <meta property="og:image" content="https://novum.to/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://novum.to/product-build">
+  <meta property="og:locale" content="zh_TW">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="基礎 GEO 架構建置 | NOVUM">
+  <meta name="twitter:description" content="為品牌打造 AI 看得懂的對外入口。NT$6,800起。">
+  <meta name="twitter:image" content="https://novum.to/og-cover.png">
+
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="canonical" href="https://novum.to/product-build" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="GPTBot" content="index, follow">
+  <meta name="ClaudeBot" content="index, follow">
+  <meta name="PerplexityBot" content="index, follow">
+  <meta name="CCBot" content="index, follow">
+  <meta name="anthropic-ai" content="index, follow">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Life+Savers:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Life+Savers:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet"></noscript>
+
+  <style>
+body {
+      font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: #F2F0E9;
+      color: #243027;
+    }
+    .logo-font { font-family: 'Life Savers', serif; color: #1B4332; }
+    .nav-link {
+      position: relative; padding: 0.5rem 0;
+      transition: color 0.3s ease; color: #1B4332; text-decoration: none;
+    }
+    .nav-link:hover { opacity: 0.7; }
+    .nav-link::after {
+      content: ''; position: absolute; width: 0; height: 2px;
+      bottom: 0; left: 0; background-color: #f7cb2d; transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; padding: 0.75rem; cursor: pointer; }
+    .hamburger span {
+      display: block; width: 25px; height: 3px; background-color: #1B4332;
+      transition: all 0.3s ease; border-radius: 2px;
+    }
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    @media (min-width: 768px) { .hamburger { display: none !important; } }
+    .mobile-menu {
+      position: fixed; top: 0; right: 0; width: 80%; max-width: 320px;
+      height: 100vh; background-color: #F2F0E9;
+      transform: translateX(100%);
+      visibility: hidden;
+      transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  visibility 0s linear 0.35s;
+      z-index: 10001; padding-top: 5rem;
+    }
+    .mobile-menu.active {
+      transform: translateX(0);
+      visibility: visible;
+      transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  visibility 0s;
+      
+    }
+    .menu-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.4); z-index: 10000; opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .menu-overlay.active { display: block; opacity: 1; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: hidden; }
+
+    .card {
+      background: #F5EDE0;
+      border: none;
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .card-title { color: #1B4332; font-weight: 700; margin-bottom: 0.75rem; font-size: 17px; }
+
+    /* 方案卡片：和首頁產品卡同樣風格 */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    @media (max-width: 640px) {
+      .plans-grid { grid-template-columns: 1fr; }
+    }
+    .plan-card {
+      background: #F5EDE0;
+      border: none;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .plan-card-body { padding: 1.5rem 1.5rem 1rem; flex: 1; }
+    .plan-card-footer {
+      background: #f7cb2d;
+      padding: 1rem 1.5rem;
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 0 0 16px 16px;
+    }
+    .plan-card-btn {
+      background: rgba(0,0,0,0.1);
+      border-radius: 8px;
+      padding: 0.4rem 1rem;
+      font-size: 13px;
+      color: #000;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .plan-card-btn:hover { background: rgba(0,0,0,0.18); }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .two-col .card {
+      border-radius: 0;
+    }
+    .two-col .card:first-child {
+      border-right: none;
+      border-radius: 12px 0 0 12px;
+    }
+    .two-col .card:last-child {
+      border-radius: 0 12px 12px 0;
+    }
+    @media (max-width: 640px) {
+      .two-col { grid-template-columns: 1fr; }
+      .two-col .card:first-child {
+        border-right: 1px solid rgba(255,255,255,0.12);
+        border-bottom: none;
+        border-radius: 12px 12px 0 0;
+      }
+      .two-col .card:last-child { border-radius: 0 0 12px 12px; }
+    }
+
+    .note-box {
+      background: rgba(27,67,50,0.08);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .note-box p { margin: 0.3rem 0; }
+
+
+    .nav-cta-btn { display: none !important; }
+    @media (min-width: 768px) {
+      .nav-cta-btn {
+        display: inline-flex !important; align-items: center; gap: 0.5rem;
+        background: #C4622D; color: #fff; border-radius: 6px;
+        font-weight: 500; font-size: 14px; padding: 0.375rem 1rem;
+        text-decoration: none; transition: background 0.2s;
+      }
+      .nav-cta-btn:hover { background: #d4733e; }
+    }
+
+        /* Noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50px; bottom: -50px; left: 0; right: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.10;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 220px 220px;
+      mix-blend-mode: multiply;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      top: -50px; bottom: -50px; left: 0; right: 0;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='rough'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.15 0.35' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23rough)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 300px 300px;
+      mix-blend-mode: overlay;
+    }
+
+    /* Noise texture */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50px; bottom: -50px; left: 0; right: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 180px 180px;
+    }
+  
+    /* ── Matte surface treatment ── */
+    /* Kill glossy backdrop-blur shimmer on cards/panels */
+    [class*="glass"], [class*="card"], .faq-card,
+    .product-card, section, header nav,
+    .backdrop-blur-sm, .bg-white\/50, .bg-white\/30 {
+      backdrop-filter: saturate(110%) blur(0px) !important;
+    }
+    /* Rough paper warmth on semi-transparent white panels */
+    .bg-white\/50, [style*="rgba(255,255,255,0.5)"],
+    [style*="rgba(255,255,255,0.4)"], [style*="rgba(255,255,255,0.3)"] {
+      background-color: rgba(255, 255, 255, 0.5) !important;
+    }
+    /* Slightly warmer, less saturated background */
+    body { background-color: #C4A882 !important; }
+    :root { --bg-linen: #C4A882; }
+    /* Subtle inset shadow on cards for depth without shine */
+    .faq-card, .product-card {
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 2px 8px rgba(30,40,30,0.07) !important;
+    }
+
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <header class="fixed top-0 left-0 right-0" style="z-index: 10002; background-color: rgba(196,168,130,0.55); backdrop-filter: blur(12px) saturate(120%); -webkit-backdrop-filter: blur(12px) saturate(120%); border-bottom: 1px solid rgba(7,61,53,0.08);">
+    <nav class="container mx-auto px-6 py-4">
+      <div class="flex items-center justify-between md:justify-center md:gap-8">
+        <a href="index.html" class="logo-font text-2xl text-[#1B4332] no-underline md:absolute md:left-6">NOVUM</a>
+        <button class="hamburger" id="hamburger" aria-label="選單" aria-expanded="false" type="button">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="hidden md:flex items-center gap-10 text-base">
+          <li><a href="index.html#products" class="nav-link">產品</a></li>
+          <li><a href="index.html#about" class="nav-link">關於NOVUM</a></li>
+          <li><a href="index.html#faq" class="nav-link">FAQ</a></li>
+          <li><a href="index.html#contact" class="nav-link">聯絡我們</a></li>
+        </ul>
+        <a href="examples.html" class="nav-cta-btn">
+          <span>示範案例</span><span style="font-weight:900; font-size:16px;">➜</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <div id="menu-overlay" class="menu-overlay" onclick="closeMenu()"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <ul class="flex flex-col items-center gap-8 text-2xl">
+      <li><a href="index.html#products" class="nav-link" onclick="closeMenu()">產品</a></li>
+      <li><a href="index.html#about" class="nav-link" onclick="closeMenu()">關於NOVUM</a></li>
+      <li><a href="index.html#faq" class="nav-link" onclick="closeMenu()">FAQ</a></li>
+      <li><a href="index.html#contact" class="nav-link" onclick="closeMenu()">聯絡我們</a></li>
+    </ul>
+    <div style="margin-top:2rem; display:flex; justify-content:center;">
+      <a href="examples.html" onclick="closeMenu()" style="display:inline-flex; align-items:center; gap:0.5rem; background:#C4622D; color:#fff; border-radius:6px; font-weight:500; font-size:16px; padding:0.5rem 1.25rem; text-decoration:none;">
+        <span>示範案例</span><span style="font-weight:900;">➜</span>
+      </a>
+    </div>
+  </div>
+
+  <main style="padding-top: 9rem; padding-bottom: 5rem; padding-left: 1.5rem; padding-right: 1.5rem;">
+    <div class="container mx-auto max-w-3xl space-y-12">
+
+      <!-- 標題 -->
+      <div>
+        <p class="text-sm mb-2 uppercase tracking-widest" style="color:#1B4332">推薦方案</p>
+        <h1 class="text-4xl md:text-5xl font-normal mb-4">基礎 GEO 架構建置</h1>
+        <p class="text-lg text-[#243027] opacity-80 leading-relaxed">
+          為品牌打造一個「AI 看得懂的對外入口」——一個獨立的品牌名片頁面，搭配結構化資料與 Google Search Console 健康監控，讓 AI 搜尋引擎能清楚認識你的品牌。
+        </p>
+      </div>
+
+      <!-- 為什麼 -->
+      <div class="card">
+        <p class="card-title">為什麼我們做 GEO 生成式引擎架構優化？</p>
+        <div class="space-y-3 leading-relaxed">
+          <p>Instagram、Facebook 是封閉環境，AI 爬蟲根本進不去。只有社群媒體的品牌，在 AI 搜尋裡幾乎等於隱形。有官網但結構不完整的品牌，AI 也只能靠猜測來理解你是誰。</p>
+          <p>我們提供最紮實的技術建置，<strong>不是做短期流量炒作</strong>，而是為品牌打造一個「AI 看得懂的對外入口」——逐步累積被引用、被推薦的機會。</p>
+        </div>
+      </div>
+
+      <!-- 適合／不適合 -->
+      <div class="two-col">
+        <div class="card">
+          <p class="card-title">✅ 適合對象</p>
+          <ul class="space-y-3 text-sm text-[#243027] leading-relaxed">
+            <li>● 想在 AI 搜尋全面普及前，先為品牌建立「可被 AI 讀取的數位身分證」的經營者。</li>
+            <li>● 重視品牌資產、不希望被 AI 搜尋「忽視」的中小企業或品牌自營者。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="card-title">❌ 不適合對象</p>
+          <ul class="space-y-3 text-sm text-[#243027] leading-relaxed">
+            <li>● 期待「做一次流量就立刻翻倍」的人。</li>
+            <li>● 追求短期爆紅、短期廣告效果的客戶——這是一套「底層結構優化」。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 我們怎麼做 -->
+      <div class="card space-y-8">
+        <p class="card-title text-xl">我們怎麼做</p>
+
+        <div>
+          <p class="font-bold text-lg mb-2">1. 一次性技術建置：品牌專屬 AI 搜尋入口</p>
+          <ul class="list-disc pl-6 space-y-2 text-sm leading-relaxed">
+            <li>為你建立一個<strong>獨立的品牌名片頁面</strong>——專門給 AI 爬蟲閱讀的對外入口，讓 AI 不再靠猜測來認識你的品牌。</li>
+            <li>內建品牌結構化資料（商家、服務、產品），讓 AI 直接讀取精確定義，而不是從零散文字中推測。</li>
+            <li>套用符合 Google 規範的 Schema Markup，並透過 Google 官方工具驗證，截圖存證交付給你。</li>
+            <li>頁面托管於 NOVUM 平台（網址格式：novum.to/你的品牌名）。若日後不續訂，只需自備網域，我們協助完整移轉，資料完全屬於你。</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-bold text-lg mb-2">2. 年度維護服務內容</p>
+          <p class="text-sm text-[#243027] mb-3">每季我們會主動確認你的名片頁面狀態，並從「AI 能不能正確讀到你」的角度提供報告。</p>
+          <ul class="space-y-2 text-sm leading-relaxed">
+            <li>▲ 頁面運作確認：確認名片頁面可正常存取、結構化資料健康無誤。</li>
+            <li>▲ 每季成效數據報告：提供品牌頁面在搜尋系統中的曝光與成效數據。</li>
+            <li>▲ 每年六次資料更新：包含節慶營業時間、菜單或服務項目調整等，超過六次另議。</li>
+            <li>▲ 年度到期前一個月提前通知，讓你有充裕時間決定是否續訂。</li>
+          </ul>
+        </div>
+
+        <div class="note-box">
+          <p class="font-bold mb-2" style="color:#1B4332">重要說明</p>
+          <p>● 托管費與維護費自建置完成日起計算，採年度訂閱制。</p>
+          <p>● 不綁約、資產可移交：若不續訂，只需自備網域，我們協助完整移轉，不浪費前期投入。</p>
+          <p>● 建置費為一次性費用，托管費與維護費為年度費用，分開計算。</p>
+        </div>
+      </div>
+
+      <!-- 方案 A + B 靜態卡片 -->
+      <div class="plans-grid">
+
+        <!-- 方案 A -->
+        <article class="plan-card">
+          <div class="plan-card-body">
+            <div style="font-size:11px; letter-spacing:0.08em; color:rgba(36,48,39,0.5); margin-bottom:0.5rem; text-transform:uppercase;">完整方案</div>
+            <h3 style="color:#243027; font-size:20px; font-weight:500; margin:0 0 0.75rem;">方案 A：完整建置方案</h3>
+            <ul style="color:#243027; font-size:14px; line-height:1.8; padding-left:1rem; margin:0 0 1rem;">
+              <li>品牌專屬名片頁面建置</li>
+              <li>PDF 建置說明報告（六項驗證截圖）</li>
+              <li>四次季度成效數據報告</li>
+              <li>年度六次資料更新</li>
+            </ul>
+            <div style="font-size:12px; color:rgba(36,48,39,0.55); line-height:1.9;">
+              <div>建置費 NT$6,800　托管費 NT$1,200/年</div>
+              <div>維護費 <span style="text-decoration:line-through;">NT$4,800</span> <strong style="color:#1B4332;">限時 NT$3,600</strong>/年</div>
+              <div style="margin-top:0.25rem; opacity:0.7;">建置期 10 天｜LINE 預約 → 付款 → 交付</div>
+            </div>
+          </div>
+          <div class="plan-card-footer">
+            <div>
+              <div style="font-size:11px; color:rgba(0,0,0,0.4); text-decoration:line-through;">NT$12,800</div>
+              <div style="font-size:22px; font-weight:700; color:#000;">NT$10,800</div>
+              <div style="display:inline-block; background:#000; color:#f7cb2d; padding:0.1rem 0.5rem; border-radius:4px; font-size:11px; font-weight:700; margin-top:0.2rem;">優惠至 2026.6.30</div>
+            </div>
+            <a href="https://lin.ee/5PwqGKt" target="_blank" rel="noopener noreferrer" class="plan-card-btn">立即預約 →</a>
+          </div>
+        </article>
+
+        <!-- 方案 B -->
+        <article class="plan-card">
+          <div class="plan-card-body">
+            <div style="font-size:11px; letter-spacing:0.08em; color:rgba(36,48,39,0.5); margin-bottom:0.5rem; text-transform:uppercase;">基礎方案</div>
+            <h3 style="color:#243027; font-size:20px; font-weight:500; margin:0 0 0.75rem;">方案 B：基礎建置方案</h3>
+            <p style="color:#243027; font-size:14px; line-height:1.7; margin:0 0 0.75rem; opacity:0.65;">僅含名片建置及網域托管，不含季度成效報告及資料更新。</p>
+            <ul style="color:#243027; font-size:14px; line-height:1.8; padding-left:1rem; margin:0 0 1rem;">
+              <li>品牌專屬名片頁面建置</li>
+              <li>PDF 建置說明報告（六項驗證截圖）</li>
+            </ul>
+            <div style="font-size:12px; color:rgba(36,48,39,0.55); line-height:1.9;">
+              <div>建置費 NT$6,800　托管費 NT$1,200/年</div>
+              <div style="margin-top:0.25rem; opacity:0.7;">建置期 10 天｜LINE 預約 → 付款 → 交付</div>
+            </div>
+          </div>
+          <div class="plan-card-footer">
+            <div>
+              <div style="font-size:11px; visibility:hidden;">佔位</div>
+              <div style="font-size:22px; font-weight:700; color:#000;">NT$8,000起</div>
+              <div style="display:inline-block; padding:0.1rem 0.5rem; font-size:11px; font-weight:700; margin-top:0.2rem; visibility:hidden;">佔位badge</div>
+            </div>
+            <a href="https://lin.ee/5PwqGKt" target="_blank" rel="noopener noreferrer" class="plan-card-btn">立即預約 →</a>
+          </div>
+        </article>
+
+      </div>
+
+            <!-- 返回 -->
+      <div>
+        <a href="index.html#products" style="display:inline-flex;align-items:center;gap:0.4rem;background:#C4622D;color:#fff;border-radius:9999px;font-weight:500;font-size:15px;padding:0.5rem 1.4rem;text-decoration:none;transition:background 0.2s;box-shadow:0 2px 6px rgba(0,0,0,0.12);" onmouseover="this.style.background='#d4733e'" onmouseout="this.style.background='#C4622D'">← 回到產品列表</a>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('active');
+      if (isOpen) { closeMenu(); }
+      else {
+        hamburger.classList.add('active');
+        mobileMenu.classList.add('active');
+        menuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+    function closeMenu() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      menuOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://novum.to/product-build#webpage",
+      "url": "https://novum.to/product-build",
+      "name": "基礎 GEO 架構建置 | NOVUM",
+      "description": "為品牌打造 AI 看得懂的對外入口，搭配結構化資料與 Google Search Console 監控。",
+      "isPartOf": { "@id": "https://novum.to/#website" },
+      "about": { "@id": "https://novum.to/#organization" }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://novum.to/product-build#service",
+      "name": "基礎 GEO 架構建置",
+      "description": "深層對接 AI 搜尋邏輯，建立完整的 GEO 架構，確保品牌成為 AI 生成答案中的核心資訊源。包含品牌專屬名片頁面、Schema Markup 驗證、每季成效報告、年度六次資料更新。",
+      "provider": { "@id": "https://novum.to/#organization" },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "方案 A：完整建置方案",
+          "price": "10800",
+          "priceCurrency": "TWD",
+          "priceValidUntil": "2026-06-30",
+          "availability": "https://schema.org/InStock",
+          "url": "https://lin.ee/5PwqGKt"
+        },
+        {
+          "@type": "Offer",
+          "name": "方案 B：基礎建置方案",
+          "price": "8000",
+          "priceCurrency": "TWD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://lin.ee/5PwqGKt"
+        }
+      ],
+      "serviceType": "GEO架構建置",
+      "areaServed": { "@type": "Country", "name": "台灣" }
+    }
+  ]
+}
+  </script>
+
+  <footer class="text-center py-6 text-sm opacity-50" style="color:#243027;">
+    <p>© 2026 NOVUM 版權所有</p>
+  </footer>
+
+
+</body>
+</html>

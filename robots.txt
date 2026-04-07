@@ -1,0 +1,61 @@
+# robots.txt for novum.to
+# 針對 AI 時代爬蟲的精細化引導配置
+
+# ── 一般搜尋引擎 ──────────────────────────
+User-agent: *
+Allow: /
+Disallow: /private/
+Crawl-delay: 1
+
+# ── Google ────────────────────────────────
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+# ── OpenAI / ChatGPT ──────────────────────
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: ChatGPT-User
+Allow: /
+
+# ── Anthropic / Claude ────────────────────
+User-agent: ClaudeBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: anthropic-ai
+Allow: /
+
+# ── Perplexity ────────────────────────────
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+# ── Common Crawl（學術與 LLM 訓練資料）──────
+User-agent: CCBot
+Allow: /
+Crawl-delay: 2
+
+# ── Meta AI ───────────────────────────────
+User-agent: FacebookBot
+Allow: /
+
+# ── Microsoft / Bing / Copilot ────────────
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: msnbot
+Allow: /
+
+# ── Apple ─────────────────────────────────
+User-agent: Applebot
+Allow: /
+
+# ── Sitemap 位置宣告 ──────────────────────
+Sitemap: https://novum.to/sitemap.xml

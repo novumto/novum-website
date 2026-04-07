@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>示範說明 — Lucy's Coffee Zone | NOVUM</title>
+  <meta name="description" content="NOVUM 示範案例說明：了解 GEO 技術如何幫助品牌被 AI 正確讀取。">
+
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Life+Savers:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Life+Savers:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet"></noscript>
+
+  <style>
+    :root {
+      --brand-green: #073d35;
+      --brand-yellow: #C4622D;
+      --brand-yellow-hover: #d4733e;
+      --bg-linen: #C4A882;
+      --bg-moss: #E8EBE4;
+      --text-main: #243027;
+      --text-muted: #5D635F;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: #C4A882;
+      color: var(--text-main);
+    }
+
+    .logo-font { font-family: 'Life Savers', serif; color: var(--brand-green); }
+
+    .nav-link {
+      position: relative; padding: 0.5rem 0;
+      transition: color 0.3s ease; color: var(--brand-green); text-decoration: none;
+    }
+    .nav-link:hover { opacity: 0.7; }
+    .nav-link::after {
+      content: ''; position: absolute; width: 0; height: 2px;
+      bottom: 0; left: 0; background-color: var(--brand-yellow); transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    .hamburger { display: flex; flex-direction: column; gap: 5px; padding: 0.75rem; cursor: pointer; }
+    .hamburger span {
+      display: block; width: 25px; height: 3px; background-color: var(--brand-green);
+      transition: all 0.3s ease; border-radius: 2px;
+    }
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    @media (min-width: 768px) { .hamburger { display: none !important; } }
+
+    .mobile-menu {
+      position: fixed; top: 0; right: 0; width: 80%; max-width: 320px;
+      height: 100vh; background-color: #C4A882;
+      transform: translateX(100%);
+      visibility: hidden;
+      transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  visibility 0s linear 0.35s;
+      z-index: 10001; padding-top: 5rem;
+    }
+    .mobile-menu.active {
+      transform: translateX(0);
+      visibility: visible;
+      transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  visibility 0s;
+      box-shadow: none;
+    }
+    .menu-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.4); z-index: 10000; opacity: 0; transition: opacity 0.35s ease;
+    }
+    .menu-overlay.active { display: block; opacity: 1; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: hidden; }
+
+    /* FAQ */
+    .faq-card {
+      background-color: #F5EDE0;
+      border: none;
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .faq-card h3 { color: var(--brand-green); margin-bottom: 0.75rem; }
+
+    /* 表格 */
+    .info-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 1rem; }
+    .info-table th {
+      text-align: left; padding: 0.65rem 0.85rem;
+      background: rgba(27,67,50,0.07);
+      border: 1px solid rgba(27,67,50,0.1);
+      font-weight: 700; color: var(--brand-green);
+    }
+    .info-table td {
+      padding: 0.65rem 0.85rem;
+      border: 1px solid rgba(27,67,50,0.1);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .info-table tr:nth-child(even) td { background: rgba(27,67,50,0.03); }
+    .info-table .mono { font-family: monospace; font-size: 12px; color: #2a6049; }
+
+    /* nav cta */
+    .nav-cta-btn { display: none !important; }
+    @media (min-width: 768px) {
+      .nav-cta-btn {
+        display: inline-flex !important; align-items: center; gap: 0.5rem;
+        background: #C4622D; color: #fff; border-radius: 6px;
+        font-weight: 500; font-size: 14px; padding: 0.375rem 1rem;
+        text-decoration: none; transition: background 0.2s;
+      }
+      .nav-cta-btn:hover { background: #d4733e; }
+    }
+
+    /* 返回按鈕 */
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: #C4622D; color: #fff;
+      border-radius: 6px; font-weight: 500; font-size: 15px;
+      padding: 0.55rem 1.25rem; text-decoration: none;
+      transition: background 0.2s; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .back-btn:hover { background: #d4733e; }
+
+    /* validator link */
+    .validator-box {
+      background: rgba(27,67,50,0.06);
+      border: 1px solid rgba(27,67,50,0.12);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      font-size: 14px;
+      margin-top: 1rem;
+    }
+    .validator-box a { color: var(--brand-green); font-weight: 600; }
+    .validator-box a:hover { opacity: 0.7; }
+
+        /* Noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50px; bottom: -50px; left: 0; right: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.38;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.38' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 280px 280px;
+      mix-blend-mode: multiply;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      top: -50px; bottom: -50px; left: 0; right: 0;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.18;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='rough'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23rough)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      mix-blend-mode: overlay;
+    }
+  
+    /* ── Matte surface treatment ── */
+    /* Kill glossy backdrop-blur shimmer on cards/panels */
+    [class*="glass"], [class*="card"], .faq-card,
+    .product-card, section, header nav,
+    .backdrop-blur-sm, .bg-white\/50, .bg-white\/30 {
+      backdrop-filter: saturate(110%) blur(0px) !important;
+    }
+    /* Rough paper warmth on semi-transparent white panels */
+    .bg-white\/50, [style*="rgba(255,255,255,0.5)"],
+    [style*="rgba(255,255,255,0.4)"], [style*="rgba(255,255,255,0.3)"] {
+      background-color: rgba(255, 255, 255, 0.5) !important;
+    }
+    /* Slightly warmer, less saturated background */
+    body { background-color: #C4A882 !important; }
+    :root { --bg-linen: #C4A882; }
+    /* Subtle inset shadow on cards for depth without shine */
+    .faq-card, .product-card {
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 2px 8px rgba(30,40,30,0.07) !important;
+    }
+
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <header class="fixed top-0 left-0 right-0" style="z-index: 10002; background-color: rgba(196,168,130,0.55); backdrop-filter: blur(12px) saturate(120%); -webkit-backdrop-filter: blur(12px) saturate(120%); border-bottom: 1px solid rgba(7,61,53,0.08);">
+    <nav class="container mx-auto px-6 py-4">
+      <div class="flex items-center justify-between md:justify-center md:gap-8">
+        <a href="index.html" class="logo-font text-2xl no-underline md:absolute md:left-6">NOVUM</a>
+        <button class="hamburger" id="hamburger" aria-label="選單" aria-expanded="false" type="button">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="hidden md:flex items-center gap-10 text-base">
+          <li><a href="index.html#products" class="nav-link">產品</a></li>
+          <li><a href="index.html#about" class="nav-link">關於NOVUM</a></li>
+          <li><a href="index.html#faq" class="nav-link">FAQ</a></li>
+          <li><a href="index.html#contact" class="nav-link">聯絡我們</a></li>
+        </ul>
+        <a href="examples.html" class="nav-cta-btn">
+          <span>示範案例</span><span style="font-weight:900; font-size:16px;">➜</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <div id="menu-overlay" class="menu-overlay" onclick="closeMenu()"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <ul class="flex flex-col items-center gap-8 text-2xl">
+      <li><a href="index.html#products" class="nav-link" onclick="closeMenu()">產品</a></li>
+      <li><a href="index.html#about" class="nav-link" onclick="closeMenu()">關於NOVUM</a></li>
+      <li><a href="index.html#faq" class="nav-link" onclick="closeMenu()">FAQ</a></li>
+      <li><a href="index.html#contact" class="nav-link" onclick="closeMenu()">聯絡我們</a></li>
+    </ul>
+    <div style="margin-top:2rem; display:flex; justify-content:center;">
+      <a href="examples.html" onclick="closeMenu()" style="display:inline-flex; align-items:center; gap:0.5rem; background:#C4622D; color:#fff; border-radius:6px; font-weight:500; font-size:16px; padding:0.5rem 1.25rem; text-decoration:none;">
+        <span>示範案例</span><span style="font-weight:900;">➜</span>
+      </a>
+    </div>
+  </div>
+
+  <main style="padding-top: 6rem; padding-bottom: 5rem; padding-left: 1.5rem; padding-right: 1.5rem;">
+    <div class="container mx-auto max-w-3xl">
+
+      <h1 class="text-3xl md:text-4xl font-normal mb-2" style="color: var(--brand-green);">示範說明</h1>
+      <p class="text-base opacity-70 mb-10">Lucy's Coffee Zone 是一個虛構示範品牌，用來展示 NOVUM 的 GEO 建置服務實際效果。</p>
+
+      <div class="space-y-6">
+
+        <!-- FAQ 1 -->
+        <div class="faq-card">
+          <h3 class="text-xl font-bold">Q1：顧客看到的畫面，跟 AI 爬蟲讀到的有什麼不同？</h3>
+          <p class="text-sm leading-relaxed mb-4 opacity-80">同樣的資訊，在畫面上用人類看得懂的方式呈現，在程式碼裡則用 AI 能直接解析的結構化格式標記。以下是幾個具體例子：</p>
+
+          <div style="display:flex; flex-direction:column; gap:1.25rem;">
+
+            <!-- 營業時間 -->
+            <div>
+              <p style="font-weight:700; color:var(--brand-green); margin-bottom:0.35rem;">🕐 營業時間</p>
+              <p style="font-size:14px; line-height:1.7; margin:0;">
+                顧客看到的是「09:00 - 23:00」，爬蟲讀到的是
+                <code style="background:rgba(27,67,50,0.08); padding:0.1rem 0.4rem; border-radius:4px; font-size:12px; font-family:monospace;">openingHours: Mo-Su 09:00-23:00</code>
+                ，防止 AI 因為抓不到時間而腦補錯誤的休假資訊。
+              </p>
+            </div>
+
+            <!-- 店內特色 -->
+            <div>
+              <p style="font-weight:700; color:var(--brand-green); margin-bottom:0.35rem;">🖥 店內特色</p>
+              <p style="font-size:14px; line-height:1.7; margin:0;">
+                顧客看到的是「辦公友善、導盲犬友善」，爬蟲讀到的是
+                <code style="background:rgba(27,67,50,0.08); padding:0.1rem 0.4rem; border-radius:4px; font-size:12px; font-family:monospace;">amenityFeature: WiFi, GuideDogWelcome</code>
+                ，讓爬蟲直接將這些特點列為「事實」，確保 AI 推薦時精準命中需求。
+              </p>
+            </div>
+
+            <!-- 聯繫方式 -->
+            <div>
+              <p style="font-weight:700; color:var(--brand-green); margin-bottom:0.35rem;">📞 聯繫方式</p>
+              <p style="font-size:14px; line-height:1.7; margin:0;">
+                顧客看到的是「XX-123-45678」，爬蟲讀到的是
+                <code style="background:rgba(27,67,50,0.08); padding:0.1rem 0.4rem; border-radius:4px; font-size:12px; font-family:monospace;">telephone: +886-X-12345678</code>
+                ，確保 AI 生成的撥號連結絕對正確。
+              </p>
+            </div>
+
+          </div>
+
+          <div class="validator-box mt-4">
+            想自己驗證 AI 讀到了什麼？複製
+            <code style="background:rgba(27,67,50,0.08); padding:0.1rem 0.4rem; border-radius:4px; font-size:13px;">https://novum.to/examples</code>
+            貼到
+            <a href="https://validator.schema.org/" target="_blank" rel="noopener noreferrer">https://validator.schema.org/</a>
+            查看完整結構化資料。
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-card">
+          <h3 class="text-xl font-bold">Q2：對於沒有對外網站、只有社群媒體的店家有什麼好處？</h3>
+          <p class="text-sm leading-relaxed opacity-80">社群平台 AI 讀不到，我們幫品牌開一個 AI 能讀的入口。</p>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-card">
+          <h3 class="text-xl font-bold">Q3：當爬蟲知道店家的訊息之後有什麼好處？</h3>
+          <p class="text-sm leading-relaxed opacity-80">透過部署精確的結構化資料，讓爬蟲不再需要從零散文字中辛苦推測，從根源上停止 AI 的腦補行為。這不僅能確保 AI 輸出的地址、營業時間及服務項目達到 100% 的準確度，更能有效防止系統對品牌的核心業務產生解讀偏差。</p>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-card">
+          <h3 class="text-xl font-bold">Q4：我可以花錢買到 AI 的直接推薦或引用嗎？</h3>
+          <p class="text-sm leading-relaxed opacity-80">沒有任何人可以保證你被 AI 推薦或引用——包括我們。我們做的是確保當 AI 在找答案時，你的資料是正確的、可讀的、完整的。剩下的，是 AI 自己決定的。</p>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-card">
+          <h3 class="text-xl font-bold">Q5：名片頁建好之後，我要怎麼知道 AI 有沒有讀到？</h3>
+          <p class="text-sm leading-relaxed opacity-80">建置完成後，我們會提供 Schema 驗證結果，你可以直接用 Google 的結構化資料測試工具確認 AI 爬蟲讀到了什麼。這不是猜測，是可以當場驗證的技術事實。</p>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-card">
+          <h3 class="text-xl font-bold">Q6：建好之後要多久才會有效果？</h3>
+          <p class="text-sm leading-relaxed opacity-80">這個問題沒有標準答案，因為 AI 索引的速度取決於爬蟲的排程與網站的被引用程度。我們能保證的是：技術條件從建置當天就已就位，剩下的是時間與曝光的問題。</p>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="faq-card">
+          <h3 class="text-xl font-bold">Q7：我的店已經有官網了，還需要這個嗎？</h3>
+          <p class="text-sm leading-relaxed opacity-80">有官網不代表 AI 讀得懂。這就像你開了一家店，但沒有招牌、沒有地址、沒有菜單——Google Maps 找得到你，但 AI 不知道你是誰、賣什麼、有什麼特色。</p>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="faq-card">
+          <h3 class="text-xl font-bold">Q8：這個跟我現在做的 Google 商家有什麼不同？</h3>
+          <p class="text-sm leading-relaxed opacity-80">Google 商家是給 Google 地圖用的，AI 搜尋讀的是網站上的結構化資料。兩個系統不互通——你在 Google 商家填的資料，ChatGPT 或 Perplexity 不一定讀得到。</p>
+        </div>
+
+      </div>
+
+      <!-- 返回 -->
+      <div class="mt-12 flex flex-col items-start gap-4">
+        <a href="https://lin.ee/XNvmf0H" target="_blank" rel="noopener noreferrer" class="back-btn" style="background:#1B4332; color:#fff;">
+          透過 LINE 聯絡 ➜
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="text-center py-6 text-sm opacity-50">
+    <p>© 2026 NOVUM 版權所有</p>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('active');
+      if (isOpen) { closeMenu(); }
+      else {
+        hamburger.classList.add('active');
+        mobileMenu.classList.add('active');
+        menuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+
+    function closeMenu() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      menuOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  </script>
+
+</body>
+</html>

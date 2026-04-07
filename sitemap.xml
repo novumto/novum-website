@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- 首頁 -->
+  <url>
+    <loc>https://novum.to/</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/"/>
+  </url>
+
+  <!-- 示範案例頁 -->
+  <url>
+    <loc>https://novum.to/examples</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/examples"/>
+  </url>
+
+  <!-- 示範說明頁 -->
+  <url>
+    <loc>https://novum.to/examples-info</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/examples-info"/>
+  </url>
+
+  <!-- 產品：品牌 GEO 基礎檢測 -->
+  <url>
+    <loc>https://novum.to/product-check</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/product-check"/>
+  </url>
+
+  <!-- 產品：基礎 GEO 架構建置 -->
+  <url>
+    <loc>https://novum.to/product-build</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/product-build"/>
+  </url>
+
+</urlset>
