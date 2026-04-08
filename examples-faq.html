@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>示範說明 — GEO 常見問題｜NOVUM</title>
+  <meta name="description" content="NOVUM 示範說明：了解 GEO（生成式引擎優化）如何幫助實體店家被 AI 正確讀取，涵蓋咖啡廳、韓式料理、台菜、日式料理、法式餐酒館等示範案例說明。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://novum.to/examples-faq">
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "name": "NOVUM GEO 服務示範說明",
+    "description": "說明 GEO（生成式引擎優化）如何幫助實體店家被 AI 正確讀取，以五個虛構示範品牌為例。",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "AI 從哪裡讀到店家資訊？",
+        "acceptedAnswer": { "@type": "Answer", "text": "AI 讀的是網站程式碼裡以 JSON-LD 格式寫成的結構化資料，不是 Instagram 或 Google 商家。" }
+      },
+      {
+        "@type": "Question",
+        "name": "如果沒有結構化資料，AI 會怎麼辦？",
+        "acceptedAnswer": { "@type": "Answer", "text": "AI 不會留空白。它會從其他來源拼湊或自行推測，導致資訊錯誤、特色遺漏，或產生讓潛在客人打了一通沒人接的電話的推薦。" }
+      },
+      {
+        "@type": "Question",
+        "name": "結構化資料能標記哪些東西？",
+        "acceptedAnswer": { "@type": "Answer", "text": "不只地址和電話，還包括營業時間（含午休和週休）、設施特色（WiFi、包廂、導盲犬友善）、菜單品項與售價、適合場合、得獎記錄等。" }
+      },
+      {
+        "@type": "Question",
+        "name": "這跟 SEO 和 Google 商家有什麼不同？",
+        "acceptedAnswer": { "@type": "Answer", "text": "三個系統不互通。Google 商家服務 Google 地圖，SEO 提升搜尋排名，GEO 讓 ChatGPT、Perplexity、Claude 等 AI 搜尋引擎能正確讀取和引用你。" }
+      },
+      {
+        "@type": "Question",
+        "name": "我已經有官網了，還需要這個嗎？",
+        "acceptedAnswer": { "@type": "Answer", "text": "有官網不代表 AI 讀得懂。大多數餐廳網站是用圖片和排版設計呈現資訊的，這對人類好看，但對 AI 來說等於沒有。" }
+      },
+      {
+        "@type": "Question",
+        "name": "做了之後，我能期待什麼？",
+        "acceptedAnswer": { "@type": "Answer", "text": "沒有人能保證你能被 AI 立刻引用獲推薦，包括我們。我們做的是確保當 AI 在找答案時，你的資料是正確的、可讀的、完整的。剩下的是 AI 自己決定的。" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:      #ECDCAB;
+      --text:    #02031F;
+      --accent:  #7A2A0E;
+      --muted:   rgba(2,3,31,0.5);
+      --border:  rgba(2,3,31,0.12);
+      --card:    rgba(255,255,255,0.45);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans TC', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* grain texture */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9999;
+      opacity: 0.15;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      padding: 1.2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+
+    .nav-brand {
+      font-family: 'Roboto Slab', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.15em;
+      text-decoration: none;
+    }
+
+    .nav-line {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 48px 48px 40px;
+    }
+
+    .page-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      opacity: 0.35;
+      margin-bottom: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .page-title {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: clamp(48px, 8vw, 96px);
+      color: var(--text);
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 48px;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem 5rem;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin: 3rem 0 2rem;
+    }
+    .section-divider::before, .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── QA BLOCK ── */
+    .qa-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem 2rem;
+      margin-bottom: 10px;
+      backdrop-filter: blur(4px);
+    }
+
+    .qa-number {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .qa-question {
+      font-family: 'Roboto Slab', serif;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1.1rem;
+      line-height: 1.3;
+    }
+
+    .qa-answer {
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: var(--text);
+      opacity: 0.8;
+    }
+
+    .qa-answer p + p { margin-top: 0.85rem; }
+
+    .qa-answer strong {
+      color: var(--text);
+      opacity: 1;
+      font-weight: 700;
+    }
+
+    /* ── INDUSTRY EXAMPLES ── */
+    .industry-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 1.2rem 0 0.5rem;
+    }
+
+    .industry-item {
+      background: rgba(255,255,255,0.3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+    }
+
+    .industry-name {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .industry-issue {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .industry-desc {
+      font-size: 0.83rem;
+      line-height: 1.7;
+      opacity: 0.7;
+    }
+
+    code {
+      background: rgba(2,3,31,0.07);
+      border: 1px solid rgba(2,3,31,0.1);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-family: monospace;
+    }
+
+    /* ── TAG GRID ── */
+    .tag-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 1rem 0;
+    }
+
+    .tag {
+      background: rgba(255,255,255,0.35);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    .tag.hi {
+      background: rgba(122,42,14,0.1);
+      border-color: rgba(122,42,14,0.25);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ── COMPARE TABLE ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+
+    .compare-table th {
+      text-align: left;
+      padding: 0.6rem 0.9rem;
+      background: rgba(2,3,31,0.06);
+      border: 1px solid var(--border);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .compare-table td {
+      padding: 0.6rem 0.9rem;
+      border: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+
+    .compare-table td strong {
+      opacity: 1;
+      color: var(--text);
+    }
+
+    /* ── VALIDATOR BOX ── */
+    .validator-box {
+      background: rgba(255,255,255,0.3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      margin-top: 1rem;
+      font-size: 0.83rem;
+      line-height: 1.7;
+      opacity: 0.75;
+    }
+
+    .validator-box a {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .validator-box a:hover { opacity: 0.7; }
+
+    /* ── CTA ── */
+    .cta-block {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .cta-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--text);
+      color: var(--bg);
+      padding: 0.75rem 1.75rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.8; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      opacity: 0.45;
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.5rem; }
+      .banner { padding: 2.5rem 1.5rem 2rem; }
+      main { padding: 2rem 1.5rem 4rem; }
+      .qa-block { padding: 1.5rem 1.2rem; }
+      footer { flex-direction: column; gap: 6px; text-align: center; padding: 1.2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="https://novum.to">NOVUM</a>
+    <span class="nav-line">示範說明</span>
+  </nav>
+
+  <div class="page-header">
+    <p class="page-label">NOVUM / 示範說明</p>
+    <h1 class="page-title">示範說明</h1>
+  </div>
+
+  <hr class="divider">
+
+  <main>
+
+    <p class="section-label">五個核心概念</p>
+
+    <!-- Q1 -->
+    <div class="qa-block">
+      <p class="qa-number">概念 01</p>
+      <h2 class="qa-question">AI 從哪裡讀到你的生意資訊？</h2>
+      <div class="qa-answer">
+        <p>很多店家以為 AI 跟 Google 一樣，只要有 Google 商家、有 Instagram，就算「在網路上有了」。但 AI 搜尋引擎讀的不是這些平台——它讀的是你的<strong>網站程式碼裡，用特定格式寫進去的結構化資料</strong>。</p>
+        <p>我們的五個示範品牌，在訪客看到的畫面背後，各自有一份格式完整的資料檔。以下是各產業的具體例子：</p>
+
+        <div class="industry-grid">
+          <div class="industry-item">
+            <p class="industry-name">☕ 咖啡廳 — Lucy's Coffee Zone</p>
+            <p class="industry-issue">辦公族常問：有插座和 WiFi 嗎？可以帶導盲犬嗎？</p>
+            <p class="industry-desc">這些特色藏在 Instagram 貼文裡，AI 讀不到。結構化資料讓 <code>amenityFeature: WiFi, GuideDogWelcome</code> 直接成為 AI 可查詢的「事實」。</p>
+          </div>
+          <div class="industry-item">
+            <p class="industry-name">🥩 韓式料理 — Mr. 韓</p>
+            <p class="industry-issue">「台中哪裡有小菜無限續的韓式料理？」</p>
+            <p class="industry-desc">這種具體需求能不能被 AI 精準配對，取決於「小菜無限供應」有沒有被標記成結構化資料。另外，分段時間 11:30–14:30 / 17:30–21:30 若沒有明確標記，AI 容易說「全天營業」，讓客人白跑一趟。</p>
+          </div>
+          <div class="industry-item">
+            <p class="industry-name">🏮 台菜 — 攏賀呷台菜餐廳</p>
+            <p class="industry-issue">聚餐場合與桌菜規格是訂位前最常被問的問題。</p>
+            <p class="industry-desc">「幾人起訂、合菜最低消費、包廂可容納幾人」這類資訊，在文字介紹裡難以被 AI 精準擷取，但在結構化資料裡可以標記得清清楚楚。</p>
+          </div>
+          <div class="industry-item">
+            <p class="industry-name">🍱 日式家庭料理 — 佐藤小姐</p>
+            <p class="industry-issue">「有沒有適合帶小孩的日式餐廳？」「可以一個人吃定食嗎？」</p>
+            <p class="industry-desc">佐藤小姐主打家庭料理，適合場合和人數彈性是核心定位。這些資訊藏在文字介紹裡 AI 不一定能建立成確定的事實，但在結構化資料裡可以直接標記為可查詢的屬性。</p>
+          </div>
+          <div class="industry-item">
+            <p class="industry-name">🍷 法式餐酒館 — Le Comptoir</p>
+            <p class="industry-issue">適合場合與氛圍是選擇餐酒館最關鍵的資訊。</p>
+            <p class="industry-desc">「適合商務小聚、浪漫約會、不適合帶小孩」這類氛圍資訊，AI 若從零猜測很容易出錯。結構化資料讓這些定位直接被標記為可查詢的屬性。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="qa-block">
+      <p class="qa-number">概念 02</p>
+      <h2 class="qa-question">如果沒有結構化資料，AI 會怎麼辦？</h2>
+      <div class="qa-answer">
+        <p>AI 不會因為找不到資料就留空白不回答。它會從它能找到的地方拼湊——可能是幾年前有人在部落格寫到你、可能是其他平台的二手資料、也可能是它根據同類型店家<strong>自行推測</strong>出來的答案。</p>
+        <p>這代表什麼？如果沒有標記「不接受訂位」，AI 可能告訴客人「建議提前預約」——客人打了一通沒人接的電話，體驗直接扣分。如果沒有標記「週一公休」，AI 可能說你每天都開，讓顧客撲空。這些不是誇大，是每天在發生的事。</p>
+        <p>所以，透過部署精確的結構化資料，讓爬蟲不再需要從零散文字中辛苦推測，從根源上停止 AI 的腦補行為。這能確保 AI 輸出的地址、營業時間及服務項目的準確度，也能防止系統對品牌的核心業務產生解讀偏差。</p>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="qa-block">
+      <p class="qa-number">概念 03</p>
+      <h2 class="qa-question">結構化資料能標記哪些東西？</h2>
+      <div class="qa-answer">
+        <p>不只地址和電話。以 Lucy's Coffee Zone 示範頁為例，程式碼裡標記了以下所有資訊：</p>
+        <div class="tag-grid">
+          <span class="tag hi">每天 09:00 – 23:00</span>
+          <span class="tag hi">導盲犬友善</span>
+          <span class="tag hi">辦公友善</span>
+          <span class="tag hi">WiFi · 插座</span>
+          <span class="tag hi">室外座位 20 席</span>
+          <span class="tag hi">室內座位 50 席</span>
+          <span class="tag hi">不接受訂位</span>
+          <span class="tag hi">全面禁菸</span>
+          <span class="tag hi">得獎記錄</span>
+          <span class="tag">特調咖啡 NT$180</span>
+          <span class="tag">布朗尼冰淇淋 NT$240</span>
+          <span class="tag">佛朗明哥三明治 NT$130</span>
+          <span class="tag">料理類型：咖啡 · 輕食 · 甜點</span>
+        </div>
+        <p>每一項都用 AI 能直接解析的格式寫進去。當有人問「有插座可以辦公的咖啡廳」或「哪裡可以帶導盲犬」，透過結構化的資料讓 AI 知道你的店家服務內容後，你才有機會出現在答案裡。</p>
+        <div class="validator-box">
+          想自己驗證 AI 讀到了什麼？把示範頁網址貼到
+          <a href="https://validator.schema.org/" target="_blank" rel="noopener noreferrer">validator.schema.org</a>，
+          就可以直接看到完整的結構化資料。我們交付時也會附上驗證截圖。
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="qa-block">
+      <p class="qa-number">概念 04</p>
+      <h2 class="qa-question">這個跟我現在做的 Google 商家有什麼不同？</h2>
+      <div class="qa-answer">
+        <p>Google 商家是給 Google 地圖用的，AI 搜尋讀的是網站上的結構化資料。兩個系統不互通——你在 Google 商家填的資料，ChatGPT 或 Perplexity 不一定讀得到。</p>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="qa-block">
+      <p class="qa-number">概念 05</p>
+      <h2 class="qa-question">我可以花錢買到 AI 的直接推薦或引用嗎？</h2>
+      <div class="qa-answer">
+        <p>AI 引用或推薦不是「廣告位」，無法直接付費購買。
+AI 的決策邏輯：AI 是根據其抓取到的資料品質、資訊完整性、以及與用戶問題的相關性來生成答案。如果 AI 的答案可以被隨意買斷，用戶會迅速失去信任，這對 AI 產品來說是毀滅性的。
+如果有人保證「付錢就能上 AI 推薦第一名」，那通常是誤導，因為 AI 推薦的最終決定權始終在演算法對資料價值的判斷。</p>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="qa-block">
+      <p class="qa-number">概念 06</p>
+      <h2 class="qa-question">做了之後，我能期待什麼？</h2>
+      <div class="qa-answer">
+        <p>1. 確保 AI 生成答案時的資訊的精確度，當 AI 決定引用你的品牌時，你最大的期待應該是資訊的零誤差。
+消除錯誤推測：AI 在找不到官方結構化資料時會自行拼湊答案。優化後，AI 能直接讀取你網站中正確的地址、營業時間與政策（如不接受訂位），避免誤導客人。
+</p>
+
+正確呈現特色標籤：確保 AI 能讀到如「導盲犬友善」、「辦公友善」或「有插座」等細節，讓有特定需求的精準客群能找到你。
+</p>
+
+2. 建立 AI 友善的「數位入口」，你可以期待你的生意在 AI 時代擁有一個正式的「機器履歷」。
+技術就位：雖然沒有人能保證 AI 一定會推薦誰，但優化後能確保當 AI 在抓取資料時，你的技術條件是就緒且可讀的。
+</p>
+
+跨越平台限制：AI 並不一定會去讀 Google 商家或 Instagram 的零散資訊。GEO 優化能提供一個專門給機器讀取的結構化區塊，讓 AI 解析你的生意時不再像看圖說故事。
+</p>
+
+3. 可驗證的技術事實，這項服務不是憑感覺，而是可以被證明的。
+透明的驗證工具：你可以期待在建置完成後，將網址貼到如 Google 的結構化資料測試工具中，親眼看到 AI 讀取到的資料清單。
+</p>
+
+長期數位資產：這是一套埋在網站底層的基礎設施，一旦建立，就能長期為各種生成式引擎（ChatGPT、Claude、Perplexity 等）提供正確的索引來源。
+</p>
+
+總之，你不能期待 AI 變成你的業務員幫你瘋狂推銷，但你可以期待當 AI 幫客人尋找解答時，你的資訊是最完整、最正確且最容易被讀取的那一個候選人。</p>
+      </div>
+    </div>
+
+    <div class="section-divider">關於服務本身</div>
+
+    <!-- Q7 -->
+    <div class="qa-block">
+      <p class="qa-number">服務問題 01</p>
+      <h2 class="qa-question">我已經有官網了，還需要這個嗎？</h2>
+      <div class="qa-answer">
+        <p>有官網不代表 AI 讀得懂。大多數餐廳網站是用圖片和排版設計呈現資訊的——這對人類好看，但對 AI 來說等於沒有。</p>
+        <p>NOVUM 做的是幫你建立一個<strong>專門給 AI 讀的入口頁面</strong>，確保你的核心資訊有一個地方是結構完整、格式正確的。有官網的店家可以做，只有社群媒體的店家也可以做，兩者不衝突。</p>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="qa-block">
+      <p class="qa-number">服務問題 02</p>
+      <h2 class="qa-question">對於沒有官網、只有社群媒體的店家有什麼好處？</h2>
+      <div class="qa-answer">
+        <p>社群平台的內容 AI 基本上讀不到。你在 Instagram 上發了多少貼文、有多少追蹤者，對 AI 搜尋引擎來說幾乎沒有意義。</p>
+        <p>NOVUM 幫你<strong>開一個 AI 能讀的入口</strong>，讓你在 AI 搜尋的世界裡從「不存在」變成「存在且資料正確」。</p>
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="qa-block">
+      <p class="qa-number">服務問題 03</p>
+      <h2 class="qa-question">建好之後要多久才會有效果？</h2>
+      <div class="qa-answer">
+        <p>這個問題沒有標準答案。AI 索引的速度取決於爬蟲的排程與網站的被引用程度。</p>
+        <p>我們能保證的是：<strong>技術條件從建置當天就已就位，你可以立即透過測試工具看到 AI 讀取的成果</strong>。 剩下的是 AI 更新索引的時間問題，這與你的整體網路存在感有關；跟你的整體網路存在感有關，AI 會從各種公開訊息交叉比對開始認識你。</p>
+      </div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="qa-block">
+      <p class="qa-number">服務問題 04</p>
+      <h2 class="qa-question">我怎麼確認 AI 真的讀到了？</h2>
+      <div class="qa-answer">
+        <p>建置完成後，你可以把網址貼到 Google 的結構化資料測試工具，直接看到 AI 讀到了什麼。這不是猜測，是可以當場驗證的技術事實。我們交付時也會附上驗證截圖。</p>
+        <div class="validator-box">
+          直接試試看：把任何一個示範頁的網址貼到
+          <a href="https://validator.schema.org/" target="_blank" rel="noopener noreferrer">validator.schema.org</a>，
+          就可以看到完整的結構化資料內容。
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <p class="cta-label">想為你的店家建置 GEO？</p>
+      <a href="https://lin.ee/XNvmf0H" target="_blank" rel="noopener noreferrer" class="cta-btn">
+        透過 LINE 聯絡 →
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    <span>© 2026 NOVUM 版權所有</span>
+    <span>所有示範品牌均為虛構，僅作設計展示使用</span>
+  </footer>
+
+</body>
+</html>
