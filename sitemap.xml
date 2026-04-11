@@ -58,47 +58,47 @@
 
   <!-- 示範店家：Lucy's Coffee（北部） -->
   <url>
-    <loc>https://novum.to/lucys-coffee</loc>
+    <loc>https://novum.to/examples/lucys-coffee</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/lucys-coffee"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/examples/lucys-coffee"/>
   </url>
 
   <!-- 示範店家：Le Comptoir（中部） -->
   <url>
-    <loc>https://novum.to/Le_Comptoir</loc>
+    <loc>https://novum.to/examples/le-comptoir</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/Le_Comptoir"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/examples/le-comptoir"/>
   </url>
 
   <!-- 示範店家：Mr. 韓（南部） -->
   <url>
-    <loc>https://novum.to/mr-han</loc>
+    <loc>https://novum.to/examples/mr-han</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/mr-han"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/examples/mr-han"/>
   </url>
 
   <!-- 示範店家：龍虎鯽（花東） -->
   <url>
-    <loc>https://novum.to/long-ho-tsiah</loc>
+    <loc>https://novum.to/examples/long-ho-tsiah</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/long-ho-tsiah"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/examples/long-ho-tsiah"/>
   </url>
 
   <!-- 示範店家：佐藤さん（離島） -->
   <url>
-    <loc>https://novum.to/sato-san</loc>
+    <loc>https://novum.to/examples/sato-san</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/sato-san"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/examples/sato-san"/>
   </url>
 
   <!-- NOVUM AI Index 餐飲首頁 -->

@@ -44,9 +44,21 @@
     '.nv-logo{font-family:"Roboto Slab",serif;font-size:18px;font-weight:700;letter-spacing:0.08em;text-decoration:none;}',
     '.nv-burger{cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:4px;background:none;border:none;}',
     '.nv-burger span{display:block;width:24px;height:2px;border-radius:2px;}',
-    '@media(max-width:640px){.nv-bar{padding:16px 20px;}.nv-overlay{padding:24px 20px;}}'
+    '@media(max-width:640px){.nv-bar{padding:16px 20px;}.nv-overlay{padding:24px 20px;}}',
+    '.nv-footer{position:fixed;bottom:0;left:0;right:0;padding:16px 48px;display:flex;justify-content:space-between;align-items:center;font-size:13px;opacity:0.4;pointer-events:none;}',
+    '.nv-footer a{pointer-events:auto;color:inherit;text-decoration:none;transition:opacity 0.2s;}',
+    '.nv-footer a:hover{opacity:0.7;}',
+    '@media(max-width:640px){.nv-footer{padding:16px 20px;font-size:12px;}}'
   ].join('');
+
+  // Footer HTML
+  var footerHtml =
+    '<footer class="nv-footer" style="color:' + logoColor + '">' +
+      '<span>© 2026 NOVUM</span>' +
+      '<a href="/terms.html">使用條款</a>' +
+    '</footer>';
 
   document.head.appendChild(style);
   document.body.insertAdjacentHTML('afterbegin', html);
+  document.body.insertAdjacentHTML('beforeend', footerHtml);
 })();
