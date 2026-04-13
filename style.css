@@ -274,9 +274,9 @@ hr.divider {
 }
 .faq-q-text {
   font-family: 'Noto Sans TC', sans-serif;
-  font-weight: 900;
-  font-size: clamp(20px, 2.5vw, 28px);
-  line-height: 1.4; letter-spacing: -0.01em; color: var(--text);
+  font-weight: 700;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.5; letter-spacing: -0.01em; color: var(--text);
 }
 .faq-icon {
   flex-shrink: 0;
@@ -309,16 +309,29 @@ hr.divider {
 .faq-a .source a { color: var(--text); text-decoration: underline; }
 
 /* ── ABOUT ── */
-.about-wrap { padding: 64px 48px 80px; max-width: 720px; }
+.about-wrap { padding: 40px 48px 80px; max-width: 720px; }
+.about-section { margin-bottom: 2.5rem; }
+.about-section:last-of-type { margin-bottom: 0; }
+.section-title {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
 .about-prose {
   font-family: 'Noto Sans TC', sans-serif;
-  font-weight: 900;
-  font-size: clamp(24px, 4vw, 40px);
-  line-height: 1.5; letter-spacing: -0.02em; color: var(--text);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.85; color: var(--text);
 }
-.about-prose p { margin-bottom: 0.5em; }
+.about-prose p { margin-bottom: 0.75em; }
 .about-prose p:last-child { margin-bottom: 0; }
-.about-contact { margin-top: 64px; display: flex; gap: 16px; flex-wrap: wrap; }
+.highlight-text {
+  background: linear-gradient(transparent 60%, var(--yellow, #FFE234) 60%);
+  padding: 0 0.15rem;
+}
+.about-contact { margin-top: 48px; display: flex; gap: 12px; flex-wrap: wrap; }
 .contact-btn {
   display: inline-flex; align-items: center; gap: 10px;
   padding: 16px 32px;
