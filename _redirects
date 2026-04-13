@@ -1,3 +1,9 @@
+/ai-index/tw/food    https://fastidious-gaufre-1fd9db.netlify.app/        200
+/ai-index/tw/food/*  https://fastidious-gaufre-1fd9db.netlify.app/:splat  200
+/ai-index/tw/card    https://fastidious-gaufre-1fd9db.netlify.app/card    200
+/ai-index/tw/faq     https://fastidious-gaufre-1fd9db.netlify.app/faq     200
+/ai-index/tw/about   https://fastidious-gaufre-1fd9db.netlify.app/about   200
+
 # 店家示範頁：舊路徑 301 轉到新路徑
 /lucys-coffee        /examples/lucys-coffee    301
 /Le_Comptoir         /examples/le-comptoir     301

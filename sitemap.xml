@@ -5,7 +5,7 @@
   <!-- 首頁 -->
   <url>
     <loc>https://novum.to/</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/"/>
@@ -14,7 +14,7 @@
   <!-- 關於我們 -->
   <url>
     <loc>https://novum.to/about</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/about"/>
@@ -23,7 +23,7 @@
   <!-- FAQ -->
   <url>
     <loc>https://novum.to/faq</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/faq"/>
@@ -32,7 +32,7 @@
   <!-- Blog 首頁 -->
   <url>
     <loc>https://novum.to/blog</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/blog"/>
@@ -41,7 +41,7 @@
   <!-- Blog 文章：AI 改變了搜尋方式 -->
   <url>
     <loc>https://novum.to/blog/ai-search</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/blog/ai-search"/>
@@ -50,7 +50,7 @@
   <!-- 示範店家說明頁 -->
   <url>
     <loc>https://novum.to/examples-faq</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/examples-faq"/>
@@ -59,7 +59,7 @@
   <!-- 示範店家：Lucy's Coffee（北部） -->
   <url>
     <loc>https://novum.to/examples/lucys-coffee</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/examples/lucys-coffee"/>
@@ -68,7 +68,7 @@
   <!-- 示範店家：Le Comptoir（中部） -->
   <url>
     <loc>https://novum.to/examples/le-comptoir</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/examples/le-comptoir"/>
@@ -77,25 +77,25 @@
   <!-- 示範店家：Mr. 韓（南部） -->
   <url>
     <loc>https://novum.to/examples/mr-han</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/examples/mr-han"/>
   </url>
 
-  <!-- 示範店家：攏賀呷（花東） -->
+  <!-- 示範店家：龍虎鯽（花東） -->
   <url>
     <loc>https://novum.to/examples/long-ho-tsiah</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/examples/long-ho-tsiah"/>
   </url>
 
-  <!-- 示範店家：佐藤小姐（離島） -->
+  <!-- 示範店家：佐藤さん（離島） -->
   <url>
     <loc>https://novum.to/examples/sato-san</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/examples/sato-san"/>
@@ -104,7 +104,7 @@
   <!-- NOVUM AI Index 餐飲首頁 -->
   <url>
     <loc>https://novum.to/ai-index/tw/food/index.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/ai-index/tw/food/index.html"/>
@@ -113,7 +113,7 @@
   <!-- NOVUM AI Index 北部 -->
   <url>
     <loc>https://novum.to/ai-index/tw/food/north.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/ai-index/tw/food/north.html"/>
@@ -122,7 +122,7 @@
   <!-- NOVUM AI Index 中部 -->
   <url>
     <loc>https://novum.to/ai-index/tw/food/central.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/ai-index/tw/food/central.html"/>
@@ -131,7 +131,7 @@
   <!-- NOVUM AI Index 南部 -->
   <url>
     <loc>https://novum.to/ai-index/tw/food/south.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/ai-index/tw/food/south.html"/>
@@ -140,7 +140,7 @@
   <!-- NOVUM AI Index 花東 -->
   <url>
     <loc>https://novum.to/ai-index/tw/food/east.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/ai-index/tw/food/east.html"/>
@@ -149,7 +149,7 @@
   <!-- NOVUM AI Index 離島 -->
   <url>
     <loc>https://novum.to/ai-index/tw/food/island.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://novum.to/ai-index/tw/food/island.html"/>

@@ -4,13 +4,13 @@
 
 ## 核心服務
 
-NOVUM 幫品牌建立一個專門給 AI 讀取的結構化入口頁面。大多數品牌網站用圖片與視覺排版呈現資訊，AI 無法解析；社群媒體（Instagram、Facebook）的內容對 AI 搜尋引擎幾乎不可見。NOVUM 建置的頁面使用標準結構化資料格式，讓 AI 能直接讀取品牌名稱、地址、營業時間、菜單品項、環境特色、訂位政策等完整資訊。
+NOVUM 幫店家建立一個專門給 AI 讀取的結構化入口頁面。大多數餐廳網站用圖片與視覺排版呈現資訊，AI 無法解析；社群媒體（Instagram、Facebook）的內容對 AI 搜尋引擎幾乎不可見。NOVUM 建置的頁面使用標準結構化資料格式，讓 AI 能直接讀取店名、地址、營業時間、菜單品項、環境特色、訂位政策等完整資訊。
 
-服務對象為台灣實體店家，包括有官網或僅有社群媒體的品牌。建置完成後可透過 validator.schema.org 驗證 AI 實際讀取到的資料內容。
+服務對象為台灣實體店家，包括有官網或僅有社群媒體的店家。建置完成後可透過 validator.schema.org 驗證 AI 實際讀取到的資料內容。
 
 ## NOVUM AI Index
 
-NOVUM AI Index（https://novum.to/ai-index/tw/food/index.html）是台灣品牌 AI 能見度的公開目錄，從餐飲業開始收錄。目錄依地區分類，每間收錄店家均有獨立的結構化資料頁面，並追蹤 AI 爬蟲造訪次數作為能見度量化指標。
+NOVUM AI Index（https://novum.to/ai-index/tw/food/index.html）是台灣店家 AI 能見度的公開目錄，從餐飲業開始收錄。目錄依地區分類，每間收錄店家均有獨立的結構化資料頁面，並追蹤 AI 爬蟲造訪次數作為能見度量化指標。
 
 地區分類：
 - [北部餐飲](https://novum.to/ai-index/tw/food/north.html)
