@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVUM AI INDEX | Taiwan</title>
+  <link rel="canonical" href="https://novum.to/ai-index/">
+  <meta name="description" content="NOVUM AI Index 台灣產業 AI 能見度目錄，收錄餐飲、飯店等各產業在地品牌的結構化資料，讓 AI 搜尋引擎正確讀取與引用。">
+  <meta property="og:title" content="NOVUM AI Index — Taiwan">
+  <meta property="og:description" content="台灣各產業品牌 AI 能見度目錄，由 NOVUM 建置與維護。">
+  <meta property="og:url" content="https://novum.to/ai-index/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_TW">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://novum.to/ai-index/#collection",
+    "name": "NOVUM AI Index — Taiwan",
+    "description": "台灣各產業品牌 AI 能見度目錄，收錄餐飲、飯店等在地品牌的結構化資料，由 NOVUM 建置與維護，幫助品牌在 ChatGPT、Perplexity、Google AI 等 AI 搜尋工具中被正確讀取與引用。",
+    "url": "https://novum.to/ai-index/",
+    "isPartOf": { "@id": "https://novum.to/#website" },
+    "publisher": { "@id": "https://novum.to/#organization" },
+    "hasPart": [
+      {
+        "@type": "CollectionPage",
+        "name": "台灣餐飲 AI Index",
+        "url": "https://novum.to/ai-index/tw/food/"
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;900&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fade3c;
+      --text: #fc3e48;
+      --text-dark: #d42e38;
+      --btn-bg: #fc3e48;
+      --btn-text: #fade3c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans TC', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 2rem 8vw;
+      position: relative;
+    }
+
+    .title-block {
+      text-align: right;
+      margin-bottom: 3rem;
+    }
+
+    .main-title {
+      font-family: 'Roboto Slab', serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 12vw, 9rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+
+    .sub-title {
+      font-family: 'Roboto Slab', serif;
+      font-weight: 700;
+      font-size: clamp(1.5rem, 5vw, 4rem);
+      line-height: 1.2;
+      letter-spacing: 0.1em;
+      margin-top: 0.5rem;
+      animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+      opacity: 0;
+    }
+
+    .btn-wrap {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      animation: fadeInUp 0.6s ease-out 0.5s forwards;
+      opacity: 0;
+    }
+
+    .btn-main {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 700;
+      padding: 1rem 3rem;
+      border: none;
+      border-radius: 60px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 20px rgba(252, 62, 72, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-main::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(252, 62, 72, 0.4);
+    }
+
+    .btn-main:hover::before {
+      left: 100%;
+    }
+
+    /* Decorative elements */
+    .deco-circle {
+      position: absolute;
+      border: 3px solid var(--text);
+      border-radius: 50%;
+      opacity: 0.15;
+    }
+
+    .deco-1 {
+      width: 300px;
+      height: 300px;
+      top: -100px;
+      left: -100px;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    .deco-2 {
+      width: 150px;
+      height: 150px;
+      bottom: 10%;
+      left: 15%;
+      animation: pulse 3s ease-in-out 0.5s infinite;
+    }
+
+    .deco-3 {
+      width: 80px;
+      height: 80px;
+      top: 20%;
+      left: 30%;
+      animation: pulse 2.5s ease-in-out 1s infinite;
+    }
+
+    /* Animations */
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.15;
+      }
+      50% {
+        transform: scale(1.05);
+        opacity: 0.25;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem 1.5rem;
+        align-items: center;
+      }
+
+      .title-block {
+        text-align: center;
+      }
+
+      .btn-wrap {
+        justify-content: center;
+      }
+
+      .deco-1 {
+        width: 200px;
+        height: 200px;
+        top: -80px;
+        left: -80px;
+      }
+
+      .deco-2 {
+        width: 100px;
+        height: 100px;
+        bottom: 5%;
+        left: 5%;
+      }
+
+      .deco-3 {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deco-circle deco-1"></div>
+  <div class="deco-circle deco-2"></div>
+  <div class="deco-circle deco-3"></div>
+
+  <div class="container">
+    <div class="title-block">
+      <h1 class="main-title">NOVUM AI INDEX</h1>
+      <p class="sub-title">With TAIWAN</p>
+    </div>
+
+    <div class="btn-wrap">
+      <a href="/ai-index/tw/food" class="btn-main">餐飲</a>
+    </div>
+  </div>
+
+</body>
+</html>

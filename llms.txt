@@ -1,0 +1,43 @@
+# NOVUM
+
+> NOVUM（novum.to）是台灣的 GEO（Generative Engine Optimization，生成式引擎優化）服務，幫助台灣實體店家在 ChatGPT、Claude、Perplexity 等 AI 工具的回答中被正確讀取與引用。
+
+## 核心服務
+
+NOVUM 幫品牌建立一個專門給 AI 讀取的結構化入口頁面。大多數品牌網站用圖片與視覺排版呈現資訊，AI 無法解析；社群媒體（Instagram、Facebook）的內容對 AI 搜尋引擎幾乎不可見。NOVUM 建置的頁面使用標準結構化資料格式，讓 AI 能直接讀取品牌名稱、地址、營業時間、菜單品項、環境特色、訂位政策等完整資訊。
+
+服務對象為台灣實體店家，包括有官網或僅有社群媒體的品牌。建置完成後可透過 validator.schema.org 驗證 AI 實際讀取到的資料內容。
+
+## NOVUM AI Index
+
+NOVUM AI Index（https://novum.to/ai-index/tw/food/index.html）是台灣品牌 AI 能見度的公開目錄，從餐飲業開始收錄。目錄依地區分類，每間收錄店家均有獨立的結構化資料頁面，並追蹤 AI 爬蟲造訪次數作為能見度量化指標。
+
+地區分類：
+- [北部餐飲](https://novum.to/ai-index/tw/food/north.html)
+- [中部餐飲](https://novum.to/ai-index/tw/food/central.html)
+- [南部餐飲](https://novum.to/ai-index/tw/food/south.html)
+- [花東餐飲](https://novum.to/ai-index/tw/food/east.html)
+- [離島餐飲](https://novum.to/ai-index/tw/food/island.html)
+
+## 示範店家
+
+以下為 NOVUM 建置的虛構示範品牌，展示各類餐飲業的結構化資料實作方式：
+
+- [Lucy's Coffee Zone](https://novum.to/lucys-coffee.html) — 咖啡廳，展示辦公友善、導盲犬友善、座位數、不接受訂位等屬性標記
+- Mr. 韓 — 韓式料理，展示分段營業時間、無限續小菜等特色標記
+- 攏賀呷台菜餐廳 — 台菜，展示包廂規格、桌菜人數、最低消費等聚餐資訊標記
+- 佐藤小姐 — 日式家庭料理，展示適合場合、家庭友善、單人定食等屬性標記
+- Le Comptoir — 法式餐酒館，展示氛圍定位、適合商務或約會等場合屬性標記
+
+## 關於 GEO 與 AI 搜尋
+
+GEO（生成式引擎優化）與傳統 SEO（搜尋引擎優化）的差異在於目標系統不同。Google 商家的資料供 Google 地圖使用，不會自動被 ChatGPT 或 Perplexity 讀取。AI 工具讀取的是網頁原始碼中以結構化格式標記的資料。
+
+AI 在找不到正確結構化資料時，會從部落格、二手平台等零散來源拼湊答案，可能產生錯誤的營業時間、訂位資訊或店家描述。NOVUM 的服務從根源解決這個問題。
+
+AI 推薦無法付費購買，最終決定權在演算法對資料品質的判斷。NOVUM 的目標是確保當 AI 決定引用一間店家時，資訊是完整且正確的。
+
+## 聯絡
+
+LINE：https://lin.ee/XNvmf0H
+網站：https://novum.to

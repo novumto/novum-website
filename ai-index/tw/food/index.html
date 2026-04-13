@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台灣餐飲業 AI 能見度｜NOVUM AI Index</title>
+  <meta name="description" content="NOVUM AI Index 收錄台灣餐飲業品牌被 AI 爬蟲造訪紀錄，選擇地區查看北部、中部、南部、花東、離島餐飲品牌 AI 能見度。">
+  <link rel="canonical" href="https://novum.to/ai-index/tw/food">
+
+  <meta property="og:title"       content="台灣餐飲業 AI 能見度｜NOVUM AI Index">
+  <meta property="og:description" content="台灣餐飲業品牌 AI 能見度目錄，收錄 Googlebot、GPTBot、ClaudeBot 等 AI 爬蟲造訪紀錄。">
+  <meta property="og:type"        content="website">
+  <meta property="og:locale"      content="zh_TW">
+  <meta property="og:url"         content="https://novum.to/ai-index/tw/food">
+  <meta property="og:image"       content="https://novum.to/ai-index/tw/food/ai-index-og-image.png">
+  <meta property="og:site_name"   content="NOVUM AI Index">
+
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="台灣餐飲業 AI 能見度｜NOVUM AI Index">
+  <meta name="twitter:description" content="台灣餐飲業品牌 AI 能見度目錄，收錄 Googlebot、GPTBot、ClaudeBot 等 AI 爬蟲造訪紀錄。">
+  <meta name="twitter:image"       content="https://novum.to/ai-index/tw/food/ai-index-og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DataCatalog",
+    "name": "台灣餐飲業 AI 能見度目錄",
+    "description": "收錄台灣各地區餐飲品牌被 AI 爬蟲造訪次數。",
+    "url": "https://novum.to/ai-index/tw/food",
+    "keywords": ["台灣餐飲 AI 能見度", "GEO 優化", "餐廳 AI 搜尋曝光", "NOVUM AI Index"],
+    "spatialCoverage": {"@type": "Place", "name": "台灣"},
+    "provider": {"@type": "Organization", "name": "NOVUM", "url": "https://novum.to"},
+    "dataset": [
+      {"@type": "Dataset", "name": "台灣北部餐飲 AI 能見度目錄", "url": "https://novum.to/ai-index/tw/food/north"},
+      {"@type": "Dataset", "name": "台灣中部餐飲 AI 能見度目錄", "url": "https://novum.to/ai-index/tw/food/central"},
+      {"@type": "Dataset", "name": "台灣南部餐飲 AI 能見度目錄", "url": "https://novum.to/ai-index/tw/food/south"},
+      {"@type": "Dataset", "name": "台灣花東餐飲 AI 能見度目錄", "url": "https://novum.to/ai-index/tw/food/east"},
+      {"@type": "Dataset", "name": "台灣離島餐飲 AI 能見度目錄", "url": "https://novum.to/ai-index/tw/food/island"}
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/ai-index/tw/food/style.css">
+</head>
+<body>
+
+  <main class="hero">
+    <h1 id="heroTitle" class="hero-title">NOVUM AI Index</h1>
+    <p id="heroSubtitle" class="hero-sub">台灣餐飲業 AI 能見度</p>
+    <div class="btn-wrap">
+      <div class="btn-box" onclick="openModal()">
+        <div class="btn-main" id="heroCta">加入我們</div>
+      </div>
+    </div>
+  </main>
+
+  <hr class="divider">
+
+  <div class="region-grid">
+    <a class="region-pill" href="/ai-index/tw/food/north">北部</a>
+    <a class="region-pill" href="/ai-index/tw/food/central">中部</a>
+    <a class="region-pill" href="/ai-index/tw/food/south">南部</a>
+    <a class="region-pill" href="/ai-index/tw/food/east">花東</a>
+    <a class="region-pill" href="/ai-index/tw/food/island">離島</a>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+
+      <div class="form-group">
+        <label>品牌名稱 *</label>
+        <input type="text" id="inputName" placeholder="例：佐藤家庭料理">
+      </div>
+      <div class="form-group">
+        <label>官方網站 *</label>
+        <input type="url" id="inputWebsite" placeholder="https://">
+      </div>
+      <div class="form-group">
+        <label>電子信箱 <span id="emailRequiredNote" style="font-weight:400;opacity:0.5;font-size:0.78rem;">（選填）</span></label>
+        <input type="email" id="inputEmail" placeholder="選填">
+      </div>
+      <div class="form-group">
+        <label>餐飲類型 *</label>
+        <select id="selectIndustry"><option value="">請選擇</option></select>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+        <div class="form-group">
+          <label>地區 *</label>
+          <select id="selectRegion" onchange="filterCity()">
+            <option value="">請選擇</option>
+            <option>北部</option><option>中部</option><option>南部</option>
+            <option>花東</option><option>離島</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>縣市 *</label>
+          <select id="selectCity"><option value="">請先選擇地區</option></select>
+        </div>
+      </div>
+
+      <div style="background:rgba(61,184,106,0.08);border:1px solid rgba(61,184,106,0.25);border-radius:10px;padding:0.9rem 1rem;margin-bottom:1rem;">
+        <label style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.88rem;font-weight:600;cursor:pointer;line-height:1.5;">
+          <input type="checkbox" id="requestReport" style="margin-top:3px;flex-shrink:0;">
+          <span id="reportCheckboxLabel"></span>
+        </label>
+        <div id="reportCheckboxNote" style="font-size:0.78rem;opacity:0.6;margin-top:0.35rem;margin-left:1.4rem;line-height:1.5;"></div>
+      </div>
+
+      <div class="form-group" style="display:flex;align-items:flex-start;gap:0.5rem;">
+        <input type="checkbox" id="agree" style="margin-top:4px;flex-shrink:0;">
+        <label for="agree" id="agreeLabel" style="font-size:0.78rem;opacity:0.65;line-height:1.6;font-weight:400;"></label>
+      </div>
+
+      <button class="form-submit" id="submitBtn" onclick="submitForm()"></button>
+
+      <div id="successScreen" style="display:none;text-align:center;padding:1.5rem 0;">
+        <h3 id="successTitle" style="font-size:1.3rem;font-weight:700;margin-bottom:0.75rem;"></h3>
+        <p id="successMessage" style="font-size:0.9rem;opacity:0.7;line-height:1.8;margin-bottom:1.5rem;"></p>
+        <button id="successCloseBtn" onclick="closeModal()" class="form-submit" style="width:auto;padding:0.65rem 2rem;border-radius:50px;"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- storeGrid hidden placeholder so app.js doesn't crash -->
+  <div id="storeGrid" style="display:none"></div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-copy">© 2026 NOVUM</span>
+      <span class="footer-links"><a href="https://novum.to/terms.html" target="_blank">使用條款</a></span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="/ai-index/tw/food/nav.js"></script>
+  <script src="/ai-index/tw/food/content.js"></script>
+  <script src="/ai-index/tw/food/app.js"></script>
+
+</body>
+</html>

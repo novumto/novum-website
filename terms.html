@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用條款 | NOVUM</title>
+  <meta name="description" content="NOVUM 服務條款、隱私權政策與免責聲明。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #02031F;
+      --text: #F0E8D0;
+      --text-muted: rgba(240,232,208,0.55);
+      --text-dim: rgba(240,232,208,0.82);
+      --green: #3DB86A;
+      --card: rgba(255,255,255,0.05);
+      --card-border: rgba(255,255,255,0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg);
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 17px;
+      line-height: 1.9;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* Grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: -50px;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+      background-size: 220px 220px;
+      mix-blend-mode: screen;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 28px;
+      background: rgba(2,3,31,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .nav-logo {
+      font-family: 'Roboto Slab', serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    /* Main */
+    .main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 100px 24px 80px;
+    }
+
+    /* Header */
+    .page-header {
+      margin-bottom: 48px;
+    }
+    .page-title {
+      font-family: 'Roboto Slab', serif;
+      font-weight: 900;
+      font-size: clamp(32px, 6vw, 44px);
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .page-updated {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 48px;
+    }
+    .section-title {
+      font-family: 'Roboto Slab', serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--green);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .section p {
+      margin-bottom: 16px;
+      color: var(--text-dim);
+    }
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+    .section strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    /* List */
+    .section ul {
+      margin: 16px 0;
+      padding-left: 24px;
+      color: var(--text-dim);
+    }
+    .section li {
+      margin-bottom: 8px;
+    }
+
+    /* Highlight box */
+    .highlight-box {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .highlight-box p {
+      margin-bottom: 10px;
+    }
+    .highlight-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Contact */
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    .contact-box p {
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+    .contact-link {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 12px 28px;
+      border-radius: 99px;
+      transition: all 0.2s;
+    }
+    .contact-link:hover {
+      background: #2ea058;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--card-border);
+    }
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 480px) {
+      nav { padding: 14px 20px; }
+      .main { padding: 90px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://novum.to" class="nav-logo">NOVUM</a>
+</nav>
+
+<main class="main">
+  <header class="page-header">
+    <h1 class="page-title">使用條款</h1>
+    <p class="page-updated">最後更新：2026 年 4 月</p>
+  </header>
+
+  <!-- 服務說明 -->
+  <section class="section">
+    <h2 class="section-title">服務說明</h2>
+    
+    <p><strong>AI 數位名片</strong>是 NOVUM 提供的付費服務，包含客製化名片頁面設計、Schema 結構化資料建置、專屬短網址、以及 NOVUM AI Index 目錄收錄。</p>
+    
+    <p><strong>費用：</strong>建置費 NT$8,800（一次性），年費 NT$2,400（含托管與每年兩次核心資料更新）。超過每年兩次更新的部分另議。</p>
+    
+    <p><strong>付款方式：</strong>LINE Pay 或銀行轉帳，建置前預付。</p>
+    
+    <div class="highlight-box">
+      <p><strong>退款政策</strong></p>
+      <p>・付款後、問卷填寫前 → 全額退款</p>
+      <p>・問卷填寫後、設計稿確認前 → 退還 50%</p>
+      <p>・設計稿確認後 → 不退款</p>
+      <p>・年費 → 按剩餘月份比例退還</p>
+    </div>
+    
+    <p><strong>資料移交：</strong>若不續約，我們協助將名片頁完整移交至你自己的網域，包含 301 轉址設定，確保先前累積的效益不會浪費。</p>
+  </section>
+
+  <!-- 隱私權 -->
+  <section class="section">
+    <h2 class="section-title">隱私權</h2>
+    
+    <p><strong>我們蒐集的資料：</strong></p>
+    <ul>
+      <li><strong>免費掛目錄：</strong>品牌名稱、官方網站、Email</li>
+      <li><strong>付費服務：</strong>品牌名稱、負責人/聯絡人、電話、Email、地址、營業時間、以及問卷中填寫的其他品牌資訊</li>
+    </ul>
+    
+    <p><strong>資料用途：</strong>僅用於建置名片頁面、收錄至 AI Index 目錄、以及與你聯繫服務相關事宜。我們不會將你的資料出售或分享給第三方用於行銷目的。</p>
+    
+    <p><strong>使用的第三方服務：</strong>Supabase（資料庫）、Netlify（網站託管）、GitHub（網站託管）。這些服務各自依據其隱私政策處理資料。</p>
+    
+    <p><strong>你的權利：</strong>你可以隨時要求查閱、更正或刪除我們持有的你的資料，請透過 LINE 聯繫我們。</p>
+  </section>
+
+  <!-- 免責聲明 -->
+  <section class="section">
+    <h2 class="section-title">免責聲明</h2>
+    
+    <p><strong>AI 搜尋結果不保證：</strong>AI 搜尋引擎（如 ChatGPT、Google AI Overview、Perplexity 等）的回答受演算法影響，我們無法保證你的品牌一定會出現在特定查詢的回答中。我們提供的是讓 AI 更容易認識你的技術基礎建設，而非排名保證。</p>
+    
+    <p><strong>資訊正確性：</strong>名片頁面內容依據你提供的資料建置。請確認所填資訊正確，NOVUM 不為客戶自行提供之內容的正確性負責。</p>
+    
+    <p><strong>演算法變動：</strong>AI 搜尋引擎會持續更新演算法，可能影響已建置頁面的效果。我們會持續關注趨勢並適時調整策略，但無法保證任何策略永久有效。</p>
+  </section>
+
+  <!-- 聯絡 -->
+  <div class="contact-box">
+    <p>有任何問題，歡迎直接聯繫</p>
+    <a href="https://lin.ee/5PwqGKt" target="_blank" rel="noopener" class="contact-link">LINE 聯繫</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 NOVUM 版權所有 · <a href="https://novum.to">回首頁</a></p>
+</footer>
+
+</body>
+</html>

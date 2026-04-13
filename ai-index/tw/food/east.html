@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>花東餐飲 AI 指數｜NOVUM AI Index</title>
+  <meta name="description" content="台灣花東餐飲 AI 能見度目錄，收錄花蓮縣、台東縣等地餐廳被 AI 爬蟲造訪紀錄。">
+  <link rel="canonical" href="https://novum.to/ai-index/tw/food/east">
+
+  <meta property="og:title"       content="花東餐飲 AI 指數｜NOVUM AI Index">
+  <meta property="og:description" content="台灣花東餐飲店家 AI 能見度目錄，收錄 Googlebot、GPTBot、ClaudeBot 等 AI 爬蟲造訪紀錄。">
+  <meta property="og:type"        content="website">
+  <meta property="og:locale"      content="zh_TW">
+  <meta property="og:url"         content="https://novum.to/ai-index/tw/food/east">
+  <meta property="og:image"       content="https://novum.to/ai-index/tw/food/ai-index-og-image.png">
+  <meta property="og:site_name"   content="NOVUM AI Index">
+
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="花東餐飲 AI 指數｜NOVUM AI Index">
+  <meta name="twitter:description" content="台灣花東餐飲店家 AI 能見度目錄，收錄 Googlebot、GPTBot、ClaudeBot 等 AI 爬蟲造訪紀錄。">
+  <meta name="twitter:image"       content="https://novum.to/ai-index/tw/food/ai-index-og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "台灣花東餐飲 AI 能見度目錄",
+    "url": "https://novum.to/ai-index/tw/food/east",
+    "description": "NOVUM AI Index 收錄台灣花東餐飲店家被 AI 爬蟲造訪次數，涵蓋花蓮縣、台東縣等地區，追蹤 Googlebot、GPTBot、ClaudeBot 等主要 AI 爬蟲的來訪紀錄，協助餐飲業者了解自身 AI 能見度。",
+    "keywords": ["台灣花東餐飲", "AI 能見度", "GEO 優化", "餐廳 AI 搜尋", "NOVUM AI Index"],
+    "provider": {"@type": "Organization", "name": "NOVUM", "url": "https://novum.to"}
+  }
+  </script>
+
+  <link rel="stylesheet" href="/ai-index/tw/food/style.css">
+</head>
+<body>
+
+  <main class="hero">
+    <h1 class="hero-title" id="heroTitle"></h1>
+    <p class="hero-sub" id="heroSubtitle"></p>
+    <div class="btn-wrap">
+      <div class="btn-box" onclick="openModal()">
+        <div class="btn-main" id="heroCta"></div>
+      </div>
+    </div>
+  </main>
+
+  <hr class="divider">
+
+  <section class="section">
+    <p class="section-label">AI 爬蟲來訪次數</p>
+    <div class="crawler-grid" id="crawlerGrid"></div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section">
+    <div class="cards-grid" id="storeGrid">
+      <p id="storeLoading" style="opacity:0.5;font-size:0.88rem;">載入中⋯</p>
+    </div>
+  </section>
+
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal" id="modal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+
+      <div class="form-group">
+        <label>店家名稱</label>
+        <input type="text" id="inputName" placeholder="例：山海食堂">
+      </div>
+      <div class="form-group">
+        <label>官網網址</label>
+        <input type="url" id="inputWebsite" placeholder="https://yourwebsite.com">
+      </div>
+      <div class="form-group">
+        <label>產業類別</label>
+        <select id="selectIndustry"><option value="">請選擇</option></select>
+      </div>
+      <div class="form-group">
+        <label>所在地區</label>
+        <select id="selectRegion" onchange="filterCity()">
+          <option value="">請選擇</option>
+          <option value="北部">北部</option>
+          <option value="中部">中部</option>
+          <option value="南部">南部</option>
+          <option value="花東">花東</option>
+          <option value="離島">離島</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>所在縣市</label>
+        <select id="selectCity"><option value="">請先選擇地區</option></select>
+      </div>
+
+      <div class="form-group" style="background:rgba(255,255,255,0.3);border:1px solid rgba(2,3,31,0.15);border-radius:10px;padding:0.85rem 1rem;">
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;margin-bottom:0;">
+          <input type="checkbox" id="requestReport" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;cursor:pointer;accent-color:#02031f;">
+          <span>
+            <span id="reportCheckboxLabel" style="font-weight:700;font-size:0.9rem;"></span><br>
+            <span id="reportCheckboxNote" style="font-size:0.8rem;opacity:0.55;font-weight:400;"></span>
+          </span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label>聯絡信箱（不對外公開）<span id="emailRequiredNote" style="font-weight:400;opacity:0.4;margin-left:4px;font-size:0.82rem;">（選填）</span></label>
+        <input type="email" id="inputEmail" placeholder="選填">
+      </div>
+
+      <div class="form-group" style="display:flex;align-items:flex-start;gap:10px;margin-top:0.5rem">
+        <input type="checkbox" id="agree" style="margin-top:3px;width:auto;flex-shrink:0;">
+        <label for="agree" id="agreeLabel" style="opacity:0.75;font-weight:400;font-size:0.82rem;letter-spacing:0;cursor:pointer;"></label>
+      </div>
+
+      <button class="form-submit" id="submitBtn" onclick="submitForm()"></button>
+
+      <div id="successScreen" style="display:none;text-align:center;padding:2rem 0 1rem;">
+        <div style="font-size:2.5rem;margin-bottom:1rem;">✅</div>
+        <h2 id="successTitle" style="margin-bottom:0.6rem;"></h2>
+        <p id="successMessage" style="opacity:0.7;font-size:0.88rem;line-height:1.7;"></p>
+        <button class="form-submit" id="successCloseBtn" style="margin-top:1.5rem;width:auto;padding:0.65rem 2rem;" onclick="closeModal()"></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.REGION   = '花東';
+    window.INDUSTRY = '餐飲';
+    window.SHOW_BACK = true;
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="/ai-index/tw/food/nav.js"></script>
+  <script src="/ai-index/tw/food/content.js"></script>
+  <script src="/ai-index/tw/food/app.js"></script>
+</body>
+</html>

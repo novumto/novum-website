@@ -5,7 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>關於我們｜NOVUM</title>
   <link rel="canonical" href="https://novum.to/about">
-  <meta name="description" content="NOVUM 致力於 GEO 優化，為店家在 AI 搜尋時代做好準備。搜尋方式正在改變，這是市場趨勢，不是選擇。">
+  <meta name="description" content="NOVUM 致力於 GEO 優化，讓品牌持續在 AI 時代獲利。搜尋方式正在改變，這是市場趨勢，不是選擇。">
+  <meta property="og:title" content="關於我們｜NOVUM">
+  <meta property="og:description" content="NOVUM 致力於 GEO 優化，讓品牌持續在 AI 時代獲利。搜尋方式正在改變，這是市場趨勢，不是選擇。">
+  <meta property="og:image" content="https://novum.to/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="關於我們｜NOVUM">
+  <meta property="og:url" content="https://novum.to/about">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_TW">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -16,7 +25,7 @@
       "@type": "Organization",
       "name": "NOVUM",
       "url": "https://novum.to",
-      "description": "NOVUM 致力於 GEO 優化，為店家在 AI 搜尋時代做好準備。"
+      "description": "NOVUM 致力於 GEO 優化，讓品牌持續在 AI 時代獲利。"
     }
   }
   </script>
@@ -28,6 +37,88 @@
       --border: rgba(2,3,31,0.12);
       --green: #3DB86A;
       --yellow: #FFE234;
+    }
+
+    /* About 頁面專屬樣式 */
+    .about-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .about-section {
+      margin-bottom: 3rem;
+    }
+
+    .about-section:last-of-type {
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-subtitle .date-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: var(--green);
+      color: #fff;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+    }
+
+    .about-prose {
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    .about-prose p {
+      margin-bottom: 1rem;
+    }
+
+    .about-prose p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-text {
+      background: linear-gradient(transparent 60%, var(--yellow) 60%);
+      padding: 0 0.15rem;
+    }
+
+    .about-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--text);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .contact-btn:hover {
+      background: var(--text);
+      color: var(--bg);
     }
   </style>
   <script>
@@ -46,11 +137,45 @@
   </div>
   <hr class="divider">
   <div class="about-wrap">
-    <div class="about-prose">
-      <p>NOVUM 致力於 GEO 優化，為店家在 AI 搜尋時代做好準備。</p>
-      <p>搜尋方式正在改變，這是市場趨勢，不是選擇。</p>
-      <p>2026 年我們專注於協助客戶適應改變。</p>
-    </div>
+
+    <!-- NOVUM的開始 -->
+    <section class="about-section">
+      <h2 class="section-title">NOVUM 的開始</h2>
+      <div class="about-prose">
+        <p>AI 不斷的和生活裡的每一個區塊做連結，而搜尋方式的改變正在影響人們的決定，沒有一個產業可以完全不受影響，那麼要如何在 AI 的時代持續獲利？</p>
+        <p>我們看到這個缺口，決定做這件事；<span class="highlight-text">讓品牌持續在 AI 時代獲利。</span></p>
+      </div>
+    </section>
+
+    <!-- 我們做什麼 -->
+    <section class="about-section">
+      <h2 class="section-title">我們做什麼</h2>
+      <div class="about-prose">
+        <p>基於 AI 搜尋的遊戲規則下，我們為品牌打造一份自我介紹，讓 AI 快速認識品牌的核心資訊。我們必須強調，沒有人可以操控 AI 的回答，但<span class="highlight-text">唯有存在 AI 的記憶中才有機會曝光。</span></p>
+        <p>我們深知創業的辛苦，這不是從頭來過，只是多開一條路。</p>
+      </div>
+    </section>
+
+    <!-- NOVUM AI Index -->
+    <section class="about-section">
+      <h3 class="section-subtitle">
+        <span class="date-tag">2026.03</span>
+        成立 NOVUM AI Index
+      </h3>
+      <div class="about-prose">
+        <p>AI Index 是一個品牌目錄，本身就是做足 GEO 優化的網站。加入的品牌，可以透過這個平台增加在 AI 搜尋中的曝光機會。</p>
+      </div>
+    </section>
+
+    <!-- 我們怎麼做這件事 -->
+    <section class="about-section">
+      <h2 class="section-title">我們怎麼做這件事</h2>
+      <div class="about-prose">
+        <p>NOVUM 是一人品牌，透過 AI 協作完成技術工作。</p>
+        <p>2026 年，我們的目標是協助台灣品牌建立 AI 搜尋時代的訊息能見度。</p>
+      </div>
+    </section>
+
     <div class="about-contact">
       <a href="https://lin.ee/5PwqGKt" target="_blank" class="contact-btn">透過 Line 聯絡</a>
       <a href="https://www.threads.com/@novum.work" target="_blank" class="contact-btn">追蹤 Threads</a>

@@ -1,1 +1,7 @@
-/ai-index/tw/food/*  https://fastidious-gaufre-1fd9db.netlify.app/:splat  200
+# 店家示範頁：舊路徑 301 轉到新路徑
+/lucys-coffee        /examples/lucys-coffee    301
+/Le_Comptoir         /examples/le-comptoir     301
+/le-comptoir         /examples/le-comptoir     301
+/mr-han              /examples/mr-han          301
+/long-ho-tsiah       /examples/long-ho-tsiah   301
+/sato-san            /examples/sato-san        301
