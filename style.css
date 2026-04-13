@@ -41,11 +41,11 @@ body {
 }
 
 .page-title {
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: 'Roboto Slab', serif;
   font-weight: 900;
-  font-size: clamp(48px, 8vw, 96px);
+  font-size: clamp(3rem, 10vw, 5rem);
   color: var(--text);
-  line-height: 0.92;
+  line-height: 0.95;
   letter-spacing: -0.02em;
 }
 
@@ -275,7 +275,7 @@ hr.divider {
 .faq-q-text {
   font-family: 'Noto Sans TC', sans-serif;
   font-weight: 700;
-  font-size: clamp(16px, 2vw, 19px);
+  font-size: 0.97rem;
   line-height: 1.5; letter-spacing: -0.01em; color: var(--text);
 }
 .faq-icon {
@@ -313,19 +313,22 @@ hr.divider {
 .about-section { margin-bottom: 2.5rem; }
 .about-section:last-of-type { margin-bottom: 0; }
 .section-title {
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: 'Roboto Slab', serif;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   margin-bottom: 0.75rem;
   color: var(--text);
+  line-height: 1.3;
 }
 .about-prose {
   font-family: 'Noto Sans TC', sans-serif;
   font-weight: 400;
-  font-size: 15px;
-  line-height: 1.85; color: var(--text);
+  font-size: 0.97rem;
+  line-height: 1.9;
+  color: var(--text);
+  opacity: 0.82;
 }
-.about-prose p { margin-bottom: 0.75em; }
+.about-prose p { margin-bottom: 0.65rem; }
 .about-prose p:last-child { margin-bottom: 0; }
 .highlight-text {
   background: linear-gradient(transparent 60%, var(--yellow, #FFE234) 60%);
