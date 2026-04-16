@@ -1,0 +1,249 @@
+---
+// src/pages/tw/food/[region].astro
+import { supabase } from '../../../lib/supabase.js';
+
+const REGION_MAP: Record<string, string> = {
+  north:   '北部',
+  south:   '南部',
+  central: '中部',
+  east:    '花東',
+  island:  '離島',
+};
+
+// 原版 meta 與 JSON-LD，一字不改
+const META: Record<string, {
+  title: string;
+  metaDesc: string;
+  ogDesc: string;
+  canonical: string;
+  schemaName: string;
+  schemaDesc: string;
+  schemaKeyword: string;
+}> = {
+  north: {
+    title:        '北部餐飲 AI 指數｜NOVUM AI Index',
+    metaDesc:     '台灣北部餐飲 AI 能見度目錄，收錄台北市、新北市、基隆市、桃園市、新竹市、新竹縣、宜蘭縣等地餐廳被 AI 爬蟲造訪紀錄。',
+    ogDesc:       '台灣北部餐飲店家 AI 能見度目錄，收錄 Googlebot、GPTBot、ClaudeBot 等 AI 爬蟲造訪紀錄。',
+    canonical:    'https://novum.to/ai-index/tw/food/north',
+    schemaName:   '台灣北部餐飲 AI 能見度目錄',
+    schemaDesc:   'NOVUM AI Index 收錄台灣北部餐飲店家被 AI 爬蟲造訪次數，涵蓋台北市、新北市、基隆市、桃園市、新竹市、新竹縣、宜蘭縣等地區，追蹤 Googlebot、GPTBot、ClaudeBot 等主要 AI 爬蟲的來訪紀錄，協助餐飲業者了解自身 AI 能見度。',
+    schemaKeyword: '台灣北部餐飲',
+  },
+  south: {
+    title:        '南部餐飲 AI 指數｜NOVUM AI Index',
+    metaDesc:     '台灣南部餐飲 AI 能見度目錄，收錄高雄市、台南市、嘉義市、嘉義縣、屏東縣等地餐廳被 AI 爬蟲造訪紀錄。',
+    ogDesc:       '台灣南部餐飲店家 AI 能見度目錄，收錄 Googlebot、GPTBot、ClaudeBot 等 AI 爬蟲造訪紀錄。',
+    canonical:    'https://novum.to/ai-index/tw/food/south',
+    schemaName:   '台灣南部餐飲 AI 能見度目錄',
+    schemaDesc:   'NOVUM AI Index 收錄台灣南部餐飲店家被 AI 爬蟲造訪次數，涵蓋高雄市、台南市、嘉義市、嘉義縣、屏東縣等地區，追蹤 Googlebot、GPTBot、ClaudeBot 等主要 AI 爬蟲的來訪紀錄，協助餐飲業者了解自身 AI 能見度。',
+    schemaKeyword: '台灣南部餐飲',
+  },
+  central: {
+    title:        '中部餐飲 AI 指數｜NOVUM AI Index',
+    metaDesc:     '台灣中部餐飲 AI 能見度目錄，收錄台中市、彰化縣、南投縣、苗栗縣、雲林縣等地餐廳被 AI 爬蟲造訪紀錄。',
+    ogDesc:       '台灣中部餐飲店家 AI 能見度目錄，收錄 Googlebot、GPTBot、ClaudeBot 等 AI 爬蟲造訪紀錄。',
+    canonical:    'https://novum.to/ai-index/tw/food/central',
+    schemaName:   '台灣中部餐飲 AI 能見度目錄',
+    schemaDesc:   'NOVUM AI Index 收錄台灣中部餐飲店家被 AI 爬蟲造訪次數，涵蓋台中市、彰化縣、南投縣、苗栗縣、雲林縣等地區，追蹤 Googlebot、GPTBot、ClaudeBot 等主要 AI 爬蟲的來訪紀錄，協助餐飲業者了解自身 AI 能見度。',
+    schemaKeyword: '台灣中部餐飲',
+  },
+  east: {
+    title:        '花東餐飲 AI 指數｜NOVUM AI Index',
+    metaDesc:     '台灣花東餐飲 AI 能見度目錄，收錄花蓮縣、台東縣等地餐廳被 AI 爬蟲造訪紀錄。',
+    ogDesc:       '台灣花東餐飲店家 AI 能見度目錄，收錄 Googlebot、GPTBot、ClaudeBot 等 AI 爬蟲造訪紀錄。',
+    canonical:    'https://novum.to/ai-index/tw/food/east',
+    schemaName:   '台灣花東餐飲 AI 能見度目錄',
+    schemaDesc:   'NOVUM AI Index 收錄台灣花東餐飲店家被 AI 爬蟲造訪次數，涵蓋花蓮縣、台東縣等地區，追蹤 Googlebot、GPTBot、ClaudeBot 等主要 AI 爬蟲的來訪紀錄，協助餐飲業者了解自身 AI 能見度。',
+    schemaKeyword: '台灣花東餐飲',
+  },
+  island: {
+    title:        '離島餐飲 AI 指數｜NOVUM AI Index',
+    metaDesc:     '台灣離島餐飲 AI 能見度目錄，收錄澎湖縣、金門縣、連江縣（馬祖）等地餐廳被 AI 爬蟲造訪紀錄。',
+    ogDesc:       '台灣離島餐飲店家 AI 能見度目錄，收錄 Googlebot、GPTBot、ClaudeBot 等 AI 爬蟲造訪紀錄。',
+    canonical:    'https://novum.to/ai-index/tw/food/island',
+    schemaName:   '台灣離島餐飲 AI 能見度目錄',
+    schemaDesc:   'NOVUM AI Index 收錄台灣離島餐飲店家被 AI 爬蟲造訪次數，涵蓋澎湖縣、金門縣、連江縣（馬祖）等地區，追蹤 Googlebot、GPTBot、ClaudeBot 等主要 AI 爬蟲的來訪紀錄，協助餐飲業者了解自身 AI 能見度。',
+    schemaKeyword: '台灣離島餐飲',
+  },
+};
+
+const { region } = Astro.params;
+if (!region || !REGION_MAP[region]) {
+  return Astro.redirect('/ai-index/tw/food');
+}
+
+const regionLabel = REGION_MAP[region];
+const m = META[region];
+
+const { data: stores } = await supabase
+  .from('stores')
+  .select('*')
+  .eq('region', regionLabel)
+  .eq('industry_type', '餐飲')
+  .order('created_at', { ascending: false });
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{m.title}</title>
+  <meta name="description" content={m.metaDesc}>
+  <link rel="canonical" href={m.canonical}>
+
+  <meta property="og:title"       content={m.title}>
+  <meta property="og:description" content={m.ogDesc}>
+  <meta property="og:type"        content="website">
+  <meta property="og:locale"      content="zh_TW">
+  <meta property="og:url"         content={m.canonical}>
+  <meta property="og:image"       content="https://novum.to/ai-index/tw/food/ai-index-og-image.png">
+  <meta property="og:site_name"   content="NOVUM AI Index">
+
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content={m.title}>
+  <meta name="twitter:description" content={m.ogDesc}>
+  <meta name="twitter:image"       content="https://novum.to/ai-index/tw/food/ai-index-og-image.png">
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": m.schemaName,
+    "url": m.canonical,
+    "description": m.schemaDesc,
+    "keywords": [m.schemaKeyword, "AI 能見度", "GEO 優化", "餐廳 AI 搜尋", "NOVUM AI Index"],
+    "provider": {"@type": "Organization", "name": "NOVUM", "url": "https://novum.to"}
+  })} />
+
+  <link rel="stylesheet" href="/ai-index/tw/food/style.css">
+</head>
+<body>
+
+  <main class="hero">
+    <h1 class="hero-title" id="heroTitle">NOVUM AI Index</h1>
+    <p class="hero-sub" id="heroSubtitle">台灣{regionLabel}餐飲 AI 指數</p>
+    <div class="btn-wrap">
+      <div class="btn-box" onclick="openModal()">
+        <div class="btn-main" id="heroCta">加入我們</div>
+      </div>
+    </div>
+  </main>
+
+  <hr class="divider">
+
+  <section class="section">
+    <p class="section-label">AI 爬蟲來訪次數</p>
+    <div class="crawler-grid" id="crawlerGrid"></div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section">
+    <div class="cards-grid" id="storeGrid">
+      {stores && stores.length > 0 ? (
+        stores.map(store => (
+          <div class="store-card">
+            <div class="store-card-top">
+              <div class="store-name">{store.name}</div>
+            </div>
+            <div class="store-meta-list">
+              <div class="store-meta-row">
+                <span class="meta-label">官網</span>
+                <a class="meta-link" href={store.website} target="_blank" rel="noopener noreferrer">
+                  {store.website.replace(/^https?:\/\//, '')}
+                </a>
+              </div>
+              <div class="store-meta-row">
+                <span class="meta-label">產業</span>
+                <span class="meta-val">{store.industry}</span>
+              </div>
+              <div class="store-meta-row">
+                <span class="meta-label">地區</span>
+                <span class="meta-val">{store.city} · {store.region}</span>
+              </div>
+            </div>
+          </div>
+        ))
+      ) : (
+        <p style="opacity:0.5;font-size:0.88rem;">目前尚無收錄店家，成為第一個加入的店家吧！</p>
+      )}
+    </div>
+  </section>
+
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal" id="modal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+
+      <div class="form-group">
+        <label>店家名稱</label>
+        <input type="text" id="inputName" placeholder="例：山海食堂">
+      </div>
+      <div class="form-group">
+        <label>官網網址</label>
+        <input type="url" id="inputWebsite" placeholder="https://yourwebsite.com">
+      </div>
+      <div class="form-group">
+        <label>產業類別</label>
+        <select id="selectIndustry"><option value="">請選擇</option></select>
+      </div>
+      <div class="form-group">
+        <label>所在地區</label>
+        <select id="selectRegion" onchange="filterCity()">
+          <option value="">請選擇</option>
+          <option value="北部">北部</option>
+          <option value="中部">中部</option>
+          <option value="南部">南部</option>
+          <option value="花東">花東</option>
+          <option value="離島">離島</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>所在縣市</label>
+        <select id="selectCity"><option value="">請先選擇地區</option></select>
+      </div>
+
+      <div class="form-group" style="background:rgba(255,255,255,0.3);border:1px solid rgba(2,3,31,0.15);border-radius:10px;padding:0.85rem 1rem;">
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;margin-bottom:0;">
+          <input type="checkbox" id="requestReport" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;cursor:pointer;accent-color:#02031f;">
+          <span>
+            <span id="reportCheckboxLabel" style="font-weight:700;font-size:0.9rem;"></span><br>
+            <span id="reportCheckboxNote" style="font-size:0.8rem;opacity:0.55;font-weight:400;"></span>
+          </span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label>聯絡信箱（不對外公開）<span id="emailRequiredNote" style="font-weight:400;opacity:0.4;margin-left:4px;font-size:0.82rem;">（選填）</span></label>
+        <input type="email" id="inputEmail" placeholder="選填">
+      </div>
+
+      <div class="form-group" style="display:flex;align-items:flex-start;gap:10px;margin-top:0.5rem">
+        <input type="checkbox" id="agree" style="margin-top:3px;width:auto;flex-shrink:0;">
+        <label for="agree" id="agreeLabel" style="opacity:0.75;font-weight:400;font-size:0.82rem;letter-spacing:0;cursor:pointer;"></label>
+      </div>
+
+      <button class="form-submit" id="submitBtn" onclick="submitForm()"></button>
+
+      <div id="successScreen" style="display:none;text-align:center;padding:2rem 0 1rem;">
+        <div style="font-size:2.5rem;margin-bottom:1rem;">✅</div>
+        <h2 id="successTitle" style="margin-bottom:0.6rem;"></h2>
+        <p id="successMessage" style="opacity:0.7;font-size:0.88rem;line-height:1.7;"></p>
+        <button class="form-submit" id="successCloseBtn" style="margin-top:1.5rem;width:auto;padding:0.65rem 2rem;" onclick="closeModal()"></button>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ regionLabel }}>
+    window.REGION    = regionLabel;
+    window.INDUSTRY  = '餐飲';
+    window.SHOW_BACK = true;
+  </script>
+
+  <script is:inline src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script is:inline src="/ai-index/tw/food/nav.js"></script>
+  <script is:inline src="/ai-index/tw/food/content.js"></script>
+  <script is:inline src="/ai-index/tw/food/app.js"></script>
+</body>
+</html>
