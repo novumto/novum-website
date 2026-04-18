@@ -23,23 +23,23 @@ const CRAWLERS = [
 
 const MODAL_CONTENT = {
   title: 'Hi！歡迎加入 NOVUM AI Index！',
-  description: `NOVUM AI Index 致力於建構台灣在地店家的 AI 能見度目錄。<br><br>
-加入完全免費，登錄後你的店家資料將出現在目錄中，獲得 AI 爬蟲流量曝光機會。`,
+  description: `NOVUM AI Index 致力於建構台灣品牌的 AI 能見度目錄。<br><br>
+加入完全免費，登錄後你的品牌資料將出現在目錄中，獲得 AI 爬蟲流量曝光機會。`,
 
   reportCheckboxText: '同時申請免費「品牌 GEO 基礎檢測」報告',
-  reportCheckboxNote: '我們會分析你的網站 AI 能見度，2 個工作天內寄送至你的信箱',
+  reportCheckboxNote: '我們會分析你的品牌網站 AI 能見度，2 個工作天內寄送至你的信箱',
 
-  agreeText: '我已了解並同意 NOVUM AI Index 的資料使用方式：我的店家資料將顯示於目錄，並用於匿名趨勢分析。若申請報告，我同意 NOVUM 對我提供的網站進行 AI 能見度分析。所有店家資料、分析數據及報告內容，均不會出售、交換或以任何形式提供給第三方。',
+  agreeText: '我已了解並同意 NOVUM AI Index 的資料使用方式：我的品牌資料將顯示於目錄，並用於匿名趨勢分析。若申請報告，我同意 NOVUM 對我提供的網站進行 AI 能見度分析。所有品牌資料、分析數據及報告內容，均不會出售、交換或以任何形式提供給第三方。',
   submitText: '送出申請',
 
   successTitle: '申請成功！',
-  successMessage: `感謝你加入 NOVUM AI Index！<br>你的店家資料將同步出現在目錄中。`,
+  successMessage: `感謝你加入 NOVUM AI Index！<br>你的品牌網站審核中，完成後將會出現在目錄中。`,
 
   successTitleWithReport: '申請成功！',
   successMessageWithReport: `感謝你加入 NOVUM AI Index！<br>
 我們已收到你的申請，<br>
 「品牌 GEO 基礎檢測」報告將於 2 個工作天內寄送至你的信箱。<br>
-你的店家資料將同步出現在目錄中。`,
+你的品牌資料將同步出現在目錄中。`,
 
   successClose: '關閉',
 };
